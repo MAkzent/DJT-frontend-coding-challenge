@@ -13,7 +13,7 @@ class SearchBar extends Component {
        console.log({term})
    }
 
-   fetchurl(term){
+     fetchurl(term){
      fetch(term)
      .then(response => response.json())
      .then(data => {
@@ -34,7 +34,6 @@ class SearchBar extends Component {
 }
 
 //'https://api.github.com'
-
 
 
 export default SearchBar
