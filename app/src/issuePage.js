@@ -18,8 +18,8 @@ function App() {
         <SearchBar/>
         <Card/>
         <Switch>
-        <Route path="/" exact component={Home}/>
-        <Route path="/issuePage.js" exsact component={issuePage}/>
+          <Route path="/" exact component={Home}/>
+          <Route path="/issuePage.js" exsact component={issuePage}/>
         </Switch>
       </header>
     </div>

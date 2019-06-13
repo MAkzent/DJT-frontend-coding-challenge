@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import SearchBar from './SearchBar.js';
-import CardMatrix from './CardMatrix.js';
 
 class Tag extends Component {
   constructor() {

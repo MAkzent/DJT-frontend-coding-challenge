@@ -4,29 +4,19 @@ import Tag from './Tag.js';
 // The Card componts are the cards showcasing the issues
 
 class Card extends Component {
-  constructor() {
-        super();
-        this.state = { data: 'Waiting..',
-                       info: '...',
-                       tag: '...'
-                     }
-    }
-
 
   render() {
     return(
       <div className="CardContent">
         <div className="CardHeader">
-        <h3 className="TopCardText"> {this.props.data} </h3>
+          <h3 className="TopCardText"> {this.props.data} </h3>
         </div>
         <div className="CardInfo">
-        <p>  {this.props.info}</p>
+          <p> {this.props.info} </p>
         </div>
         <div className="CardBottom">
-        <Tag tag={this.props.tag}/>
+          <Tag tag={this.props.tag}/>
         </div>
-
-
       </div>
     );
   }

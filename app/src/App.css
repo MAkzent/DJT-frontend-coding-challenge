@@ -17,11 +17,11 @@
   text-align: center;
 }
 
-.MainTitle{
+.MainTitle {
   margin-top: 10%;
 }
 
-.Example{
+.Example {
   font-size: 18px;
 }
 
@@ -39,7 +39,7 @@
   }
 }
 
-.CardContent{
+.CardContent {
   background-color: white;
   width: 30%;
   margin-left: 15px;
@@ -47,13 +47,13 @@
   margin-bottom: 50px;
   height: 250px;
   margin-top: 50px;
-  position:relative;
-  float:right;
-box-shadow: 4px 10px 21px -1px rgba(196,196,196,1);
+  position: relative;
+  float: right;
+  box-shadow: 4px 10px 21px -1px rgba(196,196,196,1);
 
 }
 
-.CardHeader{
+.CardHeader {
   background-color: #4c4cff;
   height: 90px;
   width: 100%;
@@ -62,7 +62,7 @@ box-shadow: 4px 10px 21px -1px rgba(196,196,196,1);
 
 }
 
-.TopCardText{
+.TopCardText {
   position: relative;
   bottom: -20px;
   margin-left: 10px;
@@ -73,7 +73,7 @@ box-shadow: 4px 10px 21px -1px rgba(196,196,196,1);
 
 }
 
-.CardInfo{
+.CardInfo {
   color: black;
   position: relative;
   top: 70px;
@@ -86,14 +86,14 @@ box-shadow: 4px 10px 21px -1px rgba(196,196,196,1);
   font-size: 25px;
 }
 
-.CardBottom{
+.CardBottom {
   position:inherit;
   top: 85px;
   max-width: 100%;
   height: 50px;
 }
 
-.TagContent{
+.TagContent {
   height: 20px;
   width: 80px;
   background: #FF1493;
@@ -107,7 +107,7 @@ box-shadow: 4px 10px 21px -1px rgba(196,196,196,1);
   overflow: hidden;
 }
 
-.TagInfo{
+.TagInfo {
   position:relative;
   top: -22px;
   font-size: 18px;
@@ -116,7 +116,7 @@ box-shadow: 4px 10px 21px -1px rgba(196,196,196,1);
 
 }
 
-.SearchBar{
+.SearchBar {
   width:50%;
   max-width: 550px;
   height: 45px;
@@ -125,30 +125,29 @@ box-shadow: 4px 10px 21px -1px rgba(196,196,196,1);
   background-repeat: no-repeat;
 }
 
-.Containter{
+.Containter {
   width: 100%;
   height: 100%;
 }
 
-.Submit{
+.Submit {
   margin-left: 10px;
   height: 50px;
   background-color: white;
 }
 
-.CardMatrix{
+.CardMatrix {
   width: 100%;
   height: 100%;
   position: absolute;
   background-color: black;
   align-self: center;
-  visibility: hidden;
   top: 0px;
   background-color: white;
 }
-.CardRow1{
+
+.CardRow1 {
   width: 100%;
   height:inherit;
   position:relative;
-
 }
