@@ -28,7 +28,7 @@ The URL in the second mockup (top right) also looks strange due to the color con
 
  - Changes: I created a search button that sent whatever API the user would type into the search bar. I created this button, but looking back, I could potentially have added the ability to use an event listener for when the user presses enter.
 
-- The Main building decision that I made that I was not initially thinking of doing was making all the content of the website in one page rather than using multiple pages. This was made as initially it made testing easier but was left as some of the routing components did not function at the time of writing this.
+- The Main building decision that I made that I was not initially thinking of doing was making all the content of the website in one page rather than using multiple pages. This was made as initially as it made testing easier but was left as Michael suggested I could incorporate the visible/hidden mechanic in the CSS.
 
 > How long did the assignment take (in hours)? Please break down your answer into buckets (e.g., "Learning Framework," "Coding," "Debugging").
 
@@ -36,9 +36,9 @@ I would honestly say that my process was a constant loop of Learning, Coding, an
 
 Based on my estimates:
 
-Learning Framework: 3h
+Learning Framework: 4h
 
-Coding: 3h
+Coding: 3h30m-4
 
 Debugging: 5h
 
@@ -46,13 +46,13 @@ Debugging: 5h
 
 > If you could go back and give yourself advice at the beginning of the project, what would it be?
 
-- I planned most of the project intially, but I still feel that I could have improved my performance by creating a task Kanban as it would enable me to visually see all the tasks that where done and which ones are taking longer than expected. Another thing that would have been great advice would be to have created a time schedule for myself such that I have perosnal time goals.
+- I planned most of the project intially, but I still feel that I could have improved my performance by creating a task Kanban as it would enable me to visually see all the tasks that where done and which ones are taking longer than expected. Another thing that would have been great advice would be to have created a time schedule for myself such that I have perosnal time goals. I also think that a refresher in CSS would have enabled me to work much faster.
 
 > Did you learn anything new?
 
-- Yes. A lot. The most importnat thing I learnt was how much I still need to learn regarding Frameworks used today. I put in a lot of time and effort into this challenge and I was still not able to finish the whole thing, but I think that the time doing this has been extreamly valuable to me. Now I trully know where are my weak points are.
+- Yes. A lot. The most important thing I learnt was how much I still need to learn regarding Frameworks and CSS. I put in a lot of time and effort into this challenge and I was still not able to finish the whole thing, but I think that the time doing this has been extreamly valuable to me. Now I trully know where are my weak points are. and where I can learn the most
 
-Particularly what I learned in this challenge was how to manage state components between files more in depth. Its not my first time that I manage state components, but I think that this challenge further enhanced my understading of them.
+Particularly what I learned in this challenge was how to manage state components between files more in depth. Its not my first time that I manage state components, but I think that this challenge further enhanced my understading of them. I also intuitively understand functions, but I never had too much experience applying them to change CSS attributes or things of sorts which I felt was very interesting.
 
 > Do you feel that this assignment allowed you to showcase your abilities effectively?
 
@@ -62,4 +62,4 @@ However, as this was not Blockchain or Machine Learning focused challenge, I did
 
 > Are there any significant web development-related skills that you possess that were not demonstrated in this exercise? If so, what are they?
 
-- I have worked with Web3 before. I have also created multi paged websites before, but I used libraries that helped me substancially.
+- I have worked with Web3 before. I have also created multipaged websites before, but I used libraries that helped me substancially.
