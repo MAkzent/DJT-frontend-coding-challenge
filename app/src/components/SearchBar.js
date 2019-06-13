@@ -12,7 +12,9 @@ class SearchBar extends Component {
         this.state = { term: '',
                        data: [],
                        info: [],
-                       tag: []
+                       tag: [],
+                       check: false
+
 
        }
     }
@@ -31,16 +33,22 @@ class SearchBar extends Component {
        for (i = 0; i < 6; i++){
          this.setState(
            {data:[...this.state.data, data[i].title],
-            info:[...this.state.info, data[i].url],
+            info:[...this.state.info, data[i].body],
             tag: [...this.state.tag,data[i].number]}
          )
-
        }
+       this.setState(
+         {check: !this.state.check}
+       )
+       console.log(this.state.check)
        console.log(this.state.title)
      })
      .catch(error => console.error(error))
    }
 
+   changeBack(){
+     this.setState({check: !this.state.check});
+   }
 
 
 
@@ -50,8 +58,8 @@ class SearchBar extends Component {
       <input className="SearchBar" type="text" placeholder="Paste a link to a Github repo!" onChange={event => this.onInputChange(event.target.value)}></input>
     <button className="Submit" onClick={event => this.fetchurl(this.state.term)}>Search</button>
     <p className="Example">(Example: https://api.github.com/repos/facebook/react/issues)</p>
-    <div className="CardMatrix">
-      <div className="CardRow1">
+    <div className="CardMatrix" style={{visibility: this.state.check ? "visible" : "hidden"}}>
+      <div className="CardRow1" onClick={event => this.changeBack(this.state.check)}>
       <Card data={this.state.data[0]} info={this.state.info[0]} tag={this.state.tag[0]}/>
       <Card data={this.state.data[1]} info={this.state.info[1]} tag={this.state.tag[1]}/>
       <Card data={this.state.data[2]} info={this.state.info[2]} tag={this.state.tag[2]}/>

@@ -14,7 +14,6 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  margin-bottom: 50px;
   text-align: center;
 }
 
@@ -82,8 +81,9 @@ box-shadow: 4px 10px 21px -1px rgba(196,196,196,1);
   max-width: 100%;
   margin-left: 10px;
   text-overflow: ellipsis;
+  overflow-y:  hidden;
   white-space: nowrap;
-  overflow: hidden;
+  font-size: 25px;
 }
 
 .CardBottom{
@@ -98,7 +98,7 @@ box-shadow: 4px 10px 21px -1px rgba(196,196,196,1);
   width: 80px;
   background: #FF1493;
   border-radius: 10px;
-  top: 50px;
+  top: 30px;
   margin-left: 10px;
   position: relative;
   color: black;
@@ -127,6 +127,7 @@ box-shadow: 4px 10px 21px -1px rgba(196,196,196,1);
 
 .Containter{
   width: 100%;
+  height: 100%;
 }
 
 .Submit{
@@ -137,22 +138,17 @@ box-shadow: 4px 10px 21px -1px rgba(196,196,196,1);
 
 .CardMatrix{
   width: 100%;
-  margin-top: 30px;
-  position: relative;
+  height: 100%;
+  position: absolute;
   background-color: black;
+  align-self: center;
+  visibility: hidden;
+  top: 0px;
+  background-color: white;
 }
 .CardRow1{
   width: 100%;
-  height: 350px;
-  position:sticky;
-  background-color: white;
-  height: 700px;
-
-}
-.CardRow2{
-  width: 100%;
-  height: 350px;
-  position:sticky;
-  background-color: white;
+  height:inherit;
+  position:relative;
 
 }
