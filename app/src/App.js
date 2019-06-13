@@ -13,13 +13,10 @@ import CardMatrix from './components/CardMatrix.js';
 function App() {
   return (
     <Router>
-    <div className="App">
       <header className="App-header">
-      <h1>Github Issue Viewer</h1>
+      <h1 className="MainTitle">Github Issue Viewer</h1>
         <SearchBar/>
-        <CardMatrix/>
       </header>
-    </div>
     </Router>
   );
 }

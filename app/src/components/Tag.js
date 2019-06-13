@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import SearchBar from './SearchBar.js';
+import CardMatrix from './CardMatrix.js';
 
 class Tag extends Component {
   constructor() {
@@ -9,6 +11,7 @@ class Tag extends Component {
   render() {
     return(
       <div className="TagContent">
+      <p className="TagInfo">  {this.props.tag} </p>
       </div>
     );
   }

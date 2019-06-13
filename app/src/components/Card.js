@@ -4,22 +4,24 @@ import Tag from './Tag.js';
 class Card extends Component {
   constructor() {
         super();
-        this.state = { name: 'Waiting..',
+        this.state = { data: 'Waiting..',
                        info: '...',
-                       tagnum: '...'}
+                       tag: '...'
+                     }
     }
+
 
   render() {
     return(
       <div className="CardContent">
         <div className="CardHeader">
-        <h3 className="TopCardText"> {this.state.name} </h3>
+        <h3 className="TopCardText"> {this.props.data} </h3>
         </div>
         <div className="CardInfo">
-        <p>  {this.state.info}</p>
+        <p>  {this.props.info}</p>
         </div>
         <div className="CardBottom">
-        <Tag/>
+        <Tag tag={this.props.tag}/>
         </div>
 
 
