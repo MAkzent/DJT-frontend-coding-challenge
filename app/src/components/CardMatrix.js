@@ -3,6 +3,8 @@ import Card from './Card.js';
 import {term} from './SearchBar.js';
 import SearchBar from './SearchBar.js';
 
+// This
+
 class CardMatrix extends Component {
   constructor() {
         super();

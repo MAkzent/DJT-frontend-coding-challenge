@@ -25,19 +25,41 @@ The URL in the second mockup (top right) also looks strange due to the color con
 ### Looking Back
 
 > Describe the major design/build decisions and why you made them.
--
 
-> How long did the assignment take (in hours)? Please break down your answer into buckets (e.g. "Learning Framework", "Coding", "Debugging").
+ - Changes: I created a search button that sent whatever API the user would type into the search bar. I created this button, but looking back, I could potentially have added the ability to use an event listener for when the user presses enter.
+
+- The Main building decision that I made that I was not initially thinking of doing was making all the content of the website in one page rather than using multiple pages. This was made as initially it made testing easier but was left as some of the routing components did not function at the time of writing this.
+
+> How long did the assignment take (in hours)? Please break down your answer into buckets (e.g., "Learning Framework," "Coding," "Debugging").
+
+I would honestly say that my process was a constant loop of Learning, Coding, and debugging. This project allowed me to refresh my Javascript/React Skills but most importantly made me aware of some important frameworks that would have allowed me to do things substantially easier. For instance, I never used Redux as I never truly needed to have "global state memory," but in the case of this project, I felt that it could have substantially helped to have that in mind.
+
+Based on my estimates:
+
+Learning Framework: 3h
+
+Coding: 3h
+
+Debugging: 5h
+
 -
 
 > If you could go back and give yourself advice at the beginning of the project, what would it be?
--
+
+- I planned most of the project intially, but I still feel that I could have improved my performance by creating a task Kanban as it would enable me to visually see all the tasks that where done and which ones are taking longer than expected. Another thing that would have been great advice would be to have created a time schedule for myself such that I have perosnal time goals.
 
 > Did you learn anything new?
--
+
+- Yes. A lot. The most importnat thing I learnt was how much I still need to learn regarding Frameworks used today. I put in a lot of time and effort into this challenge and I was still not able to finish the whole thing, but I think that the time doing this has been extreamly valuable to me. Now I trully know where are my weak points are.
+
+Particularly what I learned in this challenge was how to manage state components between files more in depth. Its not my first time that I manage state components, but I think that this challenge further enhanced my understading of them.
 
 > Do you feel that this assignment allowed you to showcase your abilities effectively?
--
+
+- Yes this project was very effective for showcasing JAvascript and React knowledge as well as API and CSS knowledge.
+
+However, as this was not Blockchain or Machine Learning focused challenge, I did not showcase other abilities that could potentially be assets for a project.
 
 > Are there any significant web development-related skills that you possess that were not demonstrated in this exercise? If so, what are they?
--
+
+- I have worked with Web3 before. I have also created multi paged websites before, but I used libraries that helped me substancially.

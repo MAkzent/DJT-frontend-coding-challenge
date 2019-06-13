@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import Tag from './Tag.js';
 
+// The Card componts are the cards showcasing the issues
+
 class Card extends Component {
   constructor() {
         super();

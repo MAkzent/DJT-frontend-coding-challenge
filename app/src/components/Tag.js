@@ -11,7 +11,7 @@ class Tag extends Component {
   render() {
     return(
       <div className="TagContent">
-      <p className="TagInfo">  {this.props.tag} </p>
+      <p className="TagInfo">{this.props.tag} </p>
       </div>
     );
   }

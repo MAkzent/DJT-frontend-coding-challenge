@@ -1,5 +1,4 @@
 
-
 .search-icon {
   width:60%;
   height: 40px;
@@ -43,9 +42,9 @@
 
 .CardContent{
   background-color: white;
-  width: 25%;
-  margin-left: 30px;
-  margin-right: 60px;
+  width: 30%;
+  margin-left: 15px;
+  margin-right: 15px;
   margin-bottom: 50px;
   height: 250px;
   margin-top: 50px;
@@ -56,29 +55,35 @@ box-shadow: 4px 10px 21px -1px rgba(196,196,196,1);
 }
 
 .CardHeader{
-  background-color: #4169e1;
-  height: 60px;
+  background-color: #4c4cff;
+  height: 90px;
   width: 100%;
   position: absolute;
-  bottom: 190px;
+  bottom: 160px;
 
 }
 
 .TopCardText{
-  position: absolute;
+  position: relative;
   bottom: -20px;
   margin-left: 10px;
-  max-width: 25%;
+  width: 50;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 
 }
 
 .CardInfo{
   color: black;
-  position:absolute;
-  top: 40px;
+  position: relative;
+  top: 70px;
   left: -2px;
-  max-width: 25%;
+  max-width: 100%;
   margin-left: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .CardBottom{
@@ -93,10 +98,13 @@ box-shadow: 4px 10px 21px -1px rgba(196,196,196,1);
   width: 80px;
   background: #FF1493;
   border-radius: 10px;
-  top: 130px;
+  top: 50px;
   margin-left: 10px;
-  position:absolute;
+  position: relative;
   color: black;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .TagInfo{
@@ -138,6 +146,7 @@ box-shadow: 4px 10px 21px -1px rgba(196,196,196,1);
   height: 350px;
   position:sticky;
   background-color: white;
+  height: 700px;
 
 }
 .CardRow2{

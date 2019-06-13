@@ -3,6 +3,9 @@ import search from '../icons/search.svg';
 import Card from './Card.js';
 import Tag from './Tag.js';
 
+// The searchbar has the both the button and search bar components
+// This also contains the individual card components
+
 class SearchBar extends Component {
   constructor() {
         super();
@@ -25,11 +28,11 @@ class SearchBar extends Component {
      .then(response => response.json())
      .then(data => {
        let i = 0;
-       for (i = 0; i < 5; i++){
+       for (i = 0; i < 6; i++){
          this.setState(
-           {data: data[i].url,
-            info: data[i].url,
-            tag: data[i].url}
+           {data:[...this.state.data, data[i].title],
+            info:[...this.state.info, data[i].url],
+            tag: [...this.state.tag,data[i].number]}
          )
 
        }
@@ -37,8 +40,6 @@ class SearchBar extends Component {
      })
      .catch(error => console.error(error))
    }
-
-   //15872
 
 
 
@@ -54,8 +55,6 @@ class SearchBar extends Component {
       <Card data={this.state.data[0]} info={this.state.info[0]} tag={this.state.tag[0]}/>
       <Card data={this.state.data[1]} info={this.state.info[1]} tag={this.state.tag[1]}/>
       <Card data={this.state.data[2]} info={this.state.info[2]} tag={this.state.tag[2]}/>
-      </div>
-      <div className="CardRow1">
       <Card data={this.state.data[3]} info={this.state.info[3]} tag={this.state.tag[3]}/>
       <Card data={this.state.data[4]} info={this.state.info[4]} tag={this.state.tag[4]}/>
       <Card data={this.state.data[5]} info={this.state.info[5]} tag={this.state.tag[5]}/>
