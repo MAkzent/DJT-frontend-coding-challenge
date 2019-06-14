@@ -23,8 +23,8 @@
 
 > How long did the assignment take (in hours)? Please break down your answer into buckets (e.g. "Learning Framework", "Coding", "Debugging").
 -8 hours
- -1 reading/project setup
- -1 learning framework
+ -0.5 reading/project setup
+ -1.5 learning framework
  -4 for implementing/debugging
  -1.5 CSS
  -0.5 implementing tests

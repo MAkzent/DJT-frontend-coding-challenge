@@ -9,9 +9,9 @@
 $ git clone repo
 $ cd issueproject
 issueproject $ npm install
-issueproject $ npm start
+issueproject $ npm run-script start
 ```
 - To run tests, run:
 ```
-issueproject $ npm start
+issueproject $ npm run unit
 ```
