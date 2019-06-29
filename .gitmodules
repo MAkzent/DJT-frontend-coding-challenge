@@ -1,0 +1,3 @@
+[submodule "app/bashkos"]
+	path = app/bashkos
+	url = git@github.com:bashkos/DJT-frontend-coding-challenge-application.git
