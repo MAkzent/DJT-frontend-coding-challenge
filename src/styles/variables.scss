@@ -1,0 +1,20 @@
+// Palette
+$indigo: #1a237e;
+$indigo-light: #3f51b5;
+$red: #880e4f;
+$red-light: #e91e63;
+$grey: #455a64;
+$grey-light: #607d8b;
+$grey-lighter: #cfd8dc;
+$white: #ffffff;
+
+// Breakpoints
+$screen-sm-min: 576px;
+$screen-md-min: 768px;
+$screen-lg-min: 992px;
+$screen-xl-min: 1200px;
+
+// Exports
+:export {
+  indigo: $indigo;
+}

@@ -1,0 +1,22 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.filter {
+  margin-right: 16px;
+  cursor: pointer;
+  color: $grey-light;
+  font-size: 24px;
+  margin-bottom: 8px;
+
+  &.selected,
+  &:hover {
+    color: $red-light;
+  }
+}
+
+@include md {
+  .filter {
+    margin-bottom: 0;
+    font-size: 16px;
+  }
+}

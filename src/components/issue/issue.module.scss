@@ -1,0 +1,72 @@
+@import '../../styles/variables.scss';
+
+.issue {
+  box-shadow: 8px 22px 55px -5px rgba(0, 0, 0, 0.25);
+
+  .header {
+    padding: 24px;
+    background-color: $indigo-light;
+
+    .subheader {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+
+      .icon {
+        position: relative;
+        bottom: 8px;
+        left: 8px;
+        cursor: pointer;
+        color: $indigo;
+        fill: currentColor;
+        width: 16px;
+      }
+    }
+
+    .title {
+      color: $white;
+      font-size: 18px;
+      margin: 0;
+    }
+  }
+
+  .content {
+    padding: 16px;
+    max-height: 200px;
+    margin-bottom: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow-wrap: break-word;
+
+    .description-container {
+      color: $grey-light;
+      font-size: 12px;
+      margin: 0;
+
+      .not-provided {
+        color: $grey-lighter;
+      }
+    }
+
+    .labels-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      align-content: stretch;
+      align-items: stretch;
+
+      .label {
+        border-radius: 5px;
+        background-color: $red-light;
+        color: $white;
+        margin-right: 10px;
+        margin-bottom: 5px;
+        padding: 8px;
+        font-size: 9px;
+        font-weight: lighter;
+      }
+    }
+  }
+}

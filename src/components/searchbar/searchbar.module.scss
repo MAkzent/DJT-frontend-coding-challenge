@@ -1,0 +1,50 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.searchbar-container {
+  width: 80%;
+  position: relative;
+
+  .icon {
+    display: none;
+  }
+
+  .searchbar {
+    box-shadow: 8px 22px 55px -5px rgba(0, 0, 0, 0.25);
+    margin-top: 16px;
+    padding: 16px;
+    height: 40px;
+    width: calc(100% - 32px);
+    line-height: 40px;
+    font-size: 20px;
+    border-radius: unset;
+    border: 0;
+    color: $grey-light;
+    text-align: center;
+
+    &::placeholder {
+      color: $grey-lighter;
+    }
+  }
+
+  @include md {
+    width: 60%;
+
+    .icon {
+      display: initial;
+      color: $grey-lighter;
+      fill: currentColor;
+      position: absolute;
+      left: 16px;
+      padding: 10px 12px;
+      top: 32px;
+    }
+
+    .searchbar {
+      text-align: left;
+      padding-left: 64px;
+      width: calc(100% - 72px);
+      font-size: 24px;
+    }
+  }
+}

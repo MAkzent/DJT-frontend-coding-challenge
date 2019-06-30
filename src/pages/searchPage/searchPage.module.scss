@@ -1,0 +1,27 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.container {
+  margin: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $red-light;
+  color: $white;
+
+  .title {
+    font-size: 24px;
+    line-height: 24px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: center;
+
+    @include md {
+      font-size: 48px;
+      line-height: 48px;
+      margin-bottom: 0;
+    }
+  }
+}
