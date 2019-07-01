@@ -1,0 +1,4 @@
+# Ignore tracking node modules
+/node_modules
+
+/src/Style/.sass-cache

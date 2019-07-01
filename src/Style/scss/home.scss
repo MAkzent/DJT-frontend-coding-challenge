@@ -1,0 +1,61 @@
+@import "compass";
+@import "./partials/_normalize.scss";
+@import "./partials/_base.scss";
+@import "./partials/_font.scss";
+
+#home{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height:100%;
+    background: #E91E63;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    #title{
+        width:60%;
+        font-family: "Montserrat";
+        color:#fff;
+        font-size:72px;
+        font-weight:bold;
+        text-align: center;
+    }
+
+    #searchBar{
+        width:65%;
+        background:#fff;
+        box-shadow:5px 5px 20px #6a6a6a;
+        height:100px;
+        display:grid;
+        grid-template-columns: 1fr 9fr;
+        .searchIcon{
+            box-sizing: border-box;
+            background: #fff;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+
+            .Icon{
+                width:50%;
+                fill: #CFD8DC;
+            }
+        }
+
+        .inputField{
+            height:100%;
+            width:100%;
+            box-sizing: border-box;
+            border: none;
+            padding: 15px 25px;
+            font-size: 36px;
+            font-family: "Montserrat";
+            outline: none;
+
+            &::placeholder{
+                color:#CFD8DC;
+            }
+        }
+    }
+}

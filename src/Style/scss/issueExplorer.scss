@@ -1,0 +1,74 @@
+@import "compass";
+@import "./partials/_normalize.scss";
+@import "./partials/_base.scss";
+@import "./partials/_font.scss";
+@import "./partials/_mixin.scss";
+
+#header{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: #E91E63;
+    height:100px;
+
+    #logo{
+        margin: 0;
+        margin-left:100px;
+        color:#fff;
+        font-family: "Montserrat";
+        font-size:30px;
+    }
+
+    #repo{
+        margin-right: 100px;
+        text-decoration: none;
+        font-size:24px;
+        font-family: "Montserrat";
+        font-weight:300;
+        color:#455A64;
+        @include transition(0.25s);
+
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
+
+#list-wrapper{
+    #filter{
+        margin:25px 100px;
+        width:100%;
+        ul{
+            list-style: none;
+            display:flex;
+            flex-direction: row;
+            li{
+                padding:5px 10px;
+                font-size:14px;
+                font-family:"Montserrat";
+                color: #607D8B;
+                @include transition(0.25s);
+
+                &.active{
+                    color:#E91E63;
+
+                    &:hover{
+                        color:#880E4F;
+                    }
+                }
+
+                &:hover{
+                    cursor: pointer;
+                    color:#455A64;
+                }
+            }
+        }
+    }
+
+    #list{
+        display:grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin: 0 5%;
+    }
+}

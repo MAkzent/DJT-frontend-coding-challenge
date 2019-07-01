@@ -1,0 +1,70 @@
+@import "compass";
+@import "./partials/_normalize.scss";
+@import "./partials/_base.scss";
+@import "./partials/_font.scss";
+
+.issue{
+    position: relative;
+    min-height:220px;
+    margin:25px 30px;
+    box-shadow: 3px 3px 30px #6a6a6a;
+
+    .titleWrapper{
+        position: relative;
+        background: #3F51B5;
+        font-family: "Montserrat";
+        font-size: 22px;
+        font-weight: 600;
+        color:#fff;
+        padding:25px 25px;
+
+        .stateIcon{
+            position: absolute;
+            top:10px;
+            right:10px;
+            width:15px;
+            fill: #1A237E;
+        }
+    }
+    .descriptionWrapper{
+        font-family: "Montserrat";
+        font-size:15px;
+        padding:15px 25px;
+        color:#607D8B;
+        font-weight: 600;
+
+        span{
+            color:#CFD8DC;
+        }
+    }
+
+    .tagWrapper{
+        position: absolute;
+        bottom: 10px;
+        margin:0 25px;
+        float:left;
+        padding:0;
+        list-style:none;
+        .tag{
+            box-sizing:border-box;
+            display: inline-block;
+            padding: 0 8px;
+            margin-right:10px;
+            border-radius:4px;
+            font-family: "Montserrat";
+            font-size:12px;
+            color:#fff;
+            background:#E91E63;
+
+            &::before{
+                content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+                color: #fff; /* Change the color */
+                font-size:16px;
+                font-weight: bold; /* If you want it to be bold */
+                display: inline-block; /* Needed to add space between the bullet and the text */ 
+                width: 12px; /* Also needed for space (tweak if needed) */
+                margin-left: 0px; /* Also needed for space (tweak if needed) */
+            }
+        }
+    }
+}
