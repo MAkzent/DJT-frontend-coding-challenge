@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MAkzent/DJT-frontend-coding-challenge.git"
+    "url": "git+https://github.com/nomikeeper/DJT-frontend-coding-challenge.git"
   },
   "keywords": [
     "Code",
@@ -20,9 +20,9 @@
   "author": "Nomio",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MAkzent/DJT-frontend-coding-challenge/issues"
+    "url": "https://github.com/nomikeeper/DJT-frontend-coding-challenge/issues"
   },
-  "homepage": "https://github.com/MAkzent/DJT-frontend-coding-challenge#readme",
+  "homepage": "https://github.com/nomikeeper/DJT-frontend-coding-challenge#readme",
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
