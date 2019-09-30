@@ -16,6 +16,7 @@ We are giving _you_ complete control over the architecture of how to implement i
 ### Constraints
 
 - It must look and feel good across **all** screen sizes
+- No CSS frameworks
 - That's it!
 
 ### Tasks (required)
