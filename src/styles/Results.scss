@@ -4,8 +4,28 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 50px 0;
+  .results__issues {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;;
+    flex-wrap: wrap;
+  }
+}
+.results__filter {
   display: flex;
   flex-direction: row;
-  justify-content: center;;
-  flex-wrap: wrap;
+  .results__filterButton {
+    border: none;
+    outline: none;
+    color: $grey;
+    background-color: transparent;
+    font-family: "Montserrat Regular";
+    font-size: 1em;
+    &:hover {
+      cursor: pointer;
+    }
+    &[aria-pressed=true] {
+      color: $pink;
+    }
+  }
 }
