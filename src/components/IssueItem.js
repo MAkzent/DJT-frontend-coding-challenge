@@ -21,7 +21,12 @@ const IssueItem = ({ issue }) => {
           { !!body ? <p>{ body }</p> : <p aria-disabled="true">No description provided.</p> }
         </div>
         <div className="issueItem__labels">
-          { labels.map((label, index) => <div key={index} className="issueItem__label">• { label.name }</div> )}
+          { labels.map((label, index) => 
+            <div key={index} className="issueItem__label">
+              <svg><circle fill="white" cx="6" cy="6" r="3" /></svg>
+              <p>{ label.name }</p>
+            </div> 
+          )}
         </div>
       </div>
     </div>

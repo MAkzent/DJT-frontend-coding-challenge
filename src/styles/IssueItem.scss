@@ -39,16 +39,27 @@
     margin-top: auto;
     justify-self: flex-end;
     padding-top: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
   .issueItem__label {
     font-family: "Montserrat Light";
     font-size: 0.75em;
     background-color: $pink;
     color: white;
-    display: inline-block;
+    display: flex;
     margin: 0 5px 5px 0;
     padding: 3px 5px;
     border-radius: 5px;
+    p {
+      color: white;
+      font-size: 1em;
+    }
+    svg {
+      height: 12px;
+      width: 12px;
+    }
   }
   .issueItem__icons {
     position: absolute;

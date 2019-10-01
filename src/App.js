@@ -40,6 +40,7 @@ const App = () => {
     setOffset(1);
     setRepoLink(null);
     setIssuesData([]);
+    setFilter("all");
   }
 
   useEffect(() => {
