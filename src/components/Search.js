@@ -24,6 +24,7 @@ const Search = ({ setRepoLink, getIssues }) => {
       <form className="search__form" onSubmit={(e) => validateUrl(e)}>
         <ReactSVG className="search__icon" src={SearchIcon} />
         <input type="text" className="search__input" value={input} onChange={(e)=>setInput(e.target.value)} placeholder="Paste a link to a Github repo!"/>
+        { error && <div className="search__error">{ error }</div>}
       </form>
     </div>
   );
