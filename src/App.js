@@ -5,6 +5,7 @@ import './styles/Reset.scss';
 import './styles/Styles.scss';
 import Search from './components/Search.js';
 import Results from './components/Results.js'
+import Header from './components/Header.js';
 
 const App = () => {
   const [issuesData, setIssuesData] = useState([]);
@@ -18,7 +19,10 @@ const App = () => {
   return (
     <div className="app">
       { issuesData.length > 0 ?
+        <>
+        <Header repoLink={repoLink} />
         <Results issuesData={issuesData} />
+        </>
       : 
         <Search setRepoLink={setRepoLink} getIssues={getIssues} />
       }
