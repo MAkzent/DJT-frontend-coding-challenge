@@ -1,0 +1,49 @@
+@import './Styles.scss';
+
+.issueItem {
+  max-width: 320px;
+  max-height: 240px;
+  margin: 2em;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 5px 5px 15px $greyLight;
+  .issueItem__top {
+    background-color: $blue;
+    color: white;
+    font-size: 1.5em;
+    line-height: 1.3em;
+    padding: 1em;
+  }
+  .issueItem__bottom {
+    padding: 1em;
+    overflow: hidden;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    .issueItem__bodyText {
+      overflow: hidden;
+    }
+    p {
+      display: block;
+      color: $grey;
+      font-size: 1em;
+      line-height: 1.5em;
+      overflow: hidden;
+    }
+  }
+  .issueItem__labels {
+    margin-top: auto;
+    justify-self: flex-end;
+    padding-top: 5px;
+  }
+  .issueItem__label {
+    font-family: "Montserrat Light";
+    font-size: 0.75em;
+    background-color: $pink;
+    color: white;
+    display: inline-block;
+    margin: 0 5px 5px 0;
+    padding: 3px 5px;
+    border-radius: 5px;
+  }
+}

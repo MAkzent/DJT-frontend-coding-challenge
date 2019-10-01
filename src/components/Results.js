@@ -1,5 +1,6 @@
 import React from 'react';
-import IssueItem from './IssueItem.js'
+import IssueItem from './IssueItem.js';
+import '../styles/Results.scss';
 
 const Results = ({ issuesData }) => {
   return (
