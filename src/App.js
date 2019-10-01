@@ -11,15 +11,32 @@ const App = () => {
   const [issuesData, setIssuesData] = useState([]);
   const [repoLink, setRepoLink] = useState({});
   const [filter, setFilter] = useState("all");
+  const [offset, setOffset] = useState(1);
 
-  const getIssues = async ({link, filter = "all" }) => {
+  const getIssues = async ({link, filter = "all", append = false, offset = 1 }) => {
     if (filter === "pull") {
-      const { data } = await axios.get(`https://api.github.com/repos${link.pathname}/issues`);
-      setIssuesData(data.filter((issue) => !!issue.pull_request))
+      const { data } = await axios.get(`https://api.github.com/repos${link.pathname}/issues?page=${offset}`);
+      if (append) {
+        setIssuesData((prevData) => [...prevData, ...data.filter((issue) => !!issue.pull_request)]);
+      } else {
+        setOffset(1);
+        setIssuesData(data.filter((issue) => !!issue.pull_request))
+      }
     } else {
-      const { data } = await axios.get(`https://api.github.com/repos${link.pathname}/issues?state=${filter}`);
-      setIssuesData(data);
+      const { data } = await axios.get(`https://api.github.com/repos${link.pathname}/issues?state=${filter}&page=${offset}`);
+      if (append) {
+        setIssuesData((prevData => [...prevData, ...data]));
+      } else {
+        setOffset(1);
+        setIssuesData(data);
+      }
     }
+  }
+
+  const getMoreIssues = () => {
+    console.log(offset);
+    getIssues({link: repoLink, filter, append: true, offset: offset + 1});
+    setOffset((prevOffset) => prevOffset + 1);
   }
 
   useEffect(() => {
@@ -31,7 +48,7 @@ const App = () => {
       { issuesData.length > 0 ?
         <>
         <Header repoLink={repoLink} />
-        <Results issuesData={issuesData} filter={filter} setFilter={setFilter} />
+        <Results issuesData={issuesData} filter={filter} setFilter={setFilter} getMoreIssues={getMoreIssues} offset={offset} />
         </>
       : 
         <Search setRepoLink={setRepoLink} getIssues={getIssues} />
