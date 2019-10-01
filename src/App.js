@@ -23,7 +23,7 @@ const App = () => {
   }
 
   useEffect(() => {
-    getIssues({link: repoLink, filter});
+    if (!!repoLink.pathname) getIssues({link: repoLink, filter});
   }, [repoLink, filter])
 
   return (
