@@ -1,0 +1,26 @@
+@import './Styles.scss';
+
+div, input {
+  box-sizing: border-box;
+}
+body {
+  font-size: 12px;
+  font-family: "Montserrat Regular";
+  color: $greyDark;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+input {
+  outline: none;
+  border: none;
+  color: $greyDark;
+}
+button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  &:hover {
+    cursor: pointer;
+  }
+}

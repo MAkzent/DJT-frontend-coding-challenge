@@ -2,27 +2,40 @@
 
 .search {
   background-color: $pink;
+  width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  @media (max-widtH: 1200px) {
+    padding: 0 2.5%;
+  }
   .search__title {
     font-family: "Montserrat Bold";
     font-size: 4em;
     color: white;
     margin-bottom: 0.5em;
+    @media (max-width: 480px) {
+      font-size: 2em;
+    }
   }
   .search__form {
     position: relative;
+    width: 100%;
+    max-width: 720px;
   }
   .search__input {
-    width: 720px;
+    width: 100%;
     font-family: "Montserrat Light";
     font-size: 2em;
     padding: 18px 18px 18px 70px;
     &::placeholder {
       color: $greyLight;
+    }
+    @media (max-width: 480px) {
+      padding: 18px 18px 18px 50px;
+      font-size: 1em;
     }
   }
   .search__icon {
@@ -32,6 +45,11 @@
     fill: $greyLight;
     svg {
       height: 36px;
+    }
+    @media (max-width: 480px) {
+      svg {
+        height: 18px;
+      }
     }
   }
 }

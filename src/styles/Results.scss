@@ -5,11 +5,17 @@
   margin: 0 auto;
   padding: 50px 0;
   position: relative;
+  @media (max-width: 1200px) {
+    padding: 50px 2.5%
+  }
+  @media (max-width: 480px) {
+    padding: 50px 0%
+  }
 }
 .results__issues {
   display: flex;
   flex-direction: row;
-  justify-content: center;;
+  justify-content: space-around;
   flex-wrap: wrap;
   padding-top: 25px;
   h1 {
@@ -20,21 +26,36 @@
 .results__filter {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   .results__filterButton {
     color: $grey;
     font-family: "Montserrat Regular";
     font-size: 1em;
+    line-height: 1.3em;
     &[aria-pressed=true] {
       color: $pink;
     }
   }
+  @media (max-width: 480px) {
+    justify-content: center;
+  }
 }
 .results__closeButton {
   position: absolute;
-  top: 50px;
+  top: 35px;
   right: 0px;
   svg {
     height: 30px;
     fill: $grey;
+  }
+  @media (max-width: 1200px) {
+    right: 2.5%;
+  }
+  @media (max-width: 480px) {
+    top: 10px;
+    right: 0;
+    svg {
+      height: 20px;
+    }
   }
 }

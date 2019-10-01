@@ -23,29 +23,3 @@ $greyDark: #455A64;
   src:  url('../assets/fonts/montserrat-light.woff2') format('woff2'),
         url('../assets/fonts/montserrat-light.woff') format('woff');
 }
-
-// GENERAL UNIVERSAL STYLES
-div, input {
-  box-sizing: border-box;
-}
-body {
-  font-size: 12px;
-  font-family: "Montserrat Regular";
-  color: $greyDark;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-input {
-  outline: none;
-  border: none;
-  color: $greyDark;
-}
-button {
-  border: none;
-  outline: none;
-  background-color: transparent;
-  &:hover {
-    cursor: pointer;
-  }
-}

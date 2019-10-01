@@ -3,10 +3,13 @@
 .issueItem {
   width: 320px;
   height: 240px;
-  margin: 2em;
+  margin: 2em 0;
   display: flex;
   flex-direction: column;
   box-shadow: 5px 5px 15px $greyLight;
+  @media (max-width: 480px) {
+    margin: 0 0 25px 0;
+  }
   .issueItem__top {
     background-color: $blue;
     color: white;

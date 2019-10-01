@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import './styles/Reset.scss';
 import './styles/Styles.scss';
+import './styles/App.scss';
 import Search from './components/Search.js';
 import Results from './components/Results.js'
 import Header from './components/Header.js';
