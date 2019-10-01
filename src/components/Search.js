@@ -12,7 +12,7 @@ const Search = ({ setRepoLink, getIssues }) => {
     try {
       const url = new URL(input);
       setRepoLink(url);
-      getIssues(url);
+      getIssues({link: url});
     } catch (err) {
       setError("Please enter a valid URL.");
     }

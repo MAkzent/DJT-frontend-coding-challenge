@@ -1,36 +1,27 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import IssueItem from './IssueItem.js';
 import '../styles/Results.scss';
 
-const Results = ({ issuesData }) => {
-  const [filteredData, setFilteredData] = useState(issuesData);
-  const [filter, setFilter] = useState("All");
-
-  useEffect(() => {
-    if (filter === "All") setFilteredData(issuesData);
-    if (filter === "Open") setFilteredData(issuesData.filter((issue) => issue.state === "open"));
-    if (filter === "Closed") setFilteredData(issuesData.filter((issue) => issue.state === "closed"));
-    if (filter === "Pull") setFilteredData(issuesData.filter((issue) => !!issue.pull_request));
-  }, [filter, issuesData])
+const Results = ({ issuesData, filter, setFilter }) => {
 
   return (
     <div className="results">
       <div className="results__filter">
-          <button className="results__filterButton" aria-pressed={filter === "All"} onClick={()=>setFilter("All")}>
+          <button className="results__filterButton" aria-pressed={filter === "all"} onClick={()=>setFilter("all")}>
             All Issues
           </button>
-          <button className="results__filterButton" aria-pressed={filter === "Open"} onClick={()=>setFilter("Open")} >
+          <button className="results__filterButton" aria-pressed={filter === "open"} onClick={()=>setFilter("open")} >
             Open Issues
           </button>
-          <button className="results__filterButton" aria-pressed={filter === "Closed"} onClick={()=>setFilter("Closed")}>
+          <button className="results__filterButton" aria-pressed={filter === "closed"} onClick={()=>setFilter("closed")}>
             Closed Issues
           </button>
-          <button className="results__filterButton" aria-pressed={filter === "Pull"} onClick={()=>setFilter("Pull")}>
+          <button className="results__filterButton" aria-pressed={filter === "pull"} onClick={()=>setFilter("pull")}>
             Pull Requests
           </button>
       </div>
       <div className="results__issues">
-        {filteredData.map((issue, index) => <IssueItem issue={issue} key={index}/>)}
+        {issuesData.map((issue, index) => <IssueItem issue={issue} key={index}/>)}
       </div>
     </div>
   )
