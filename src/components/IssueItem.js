@@ -14,7 +14,7 @@ const IssueItem = ({ issue }) => {
           <p>{ body }</p>
         </div>
         <div className="issueItem__labels">
-          { labels.map((label) => <div className="issueItem__label">• { label.name }</div> )}
+          { labels.map((label, index) => <div key={index} className="issueItem__label">• { label.name }</div> )}
         </div>
       </div>
     </div>
