@@ -6,13 +6,14 @@ import '../styles/Results.scss';
 
 const Results = ({ issuesData, filter, setFilter, getMoreIssues, offset, clearData }) => {
 
-  const onScroll = () => {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) getMoreIssues();
-  }
+  
   useEffect(() => {
+    const onScroll = () => {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) getMoreIssues();
+    }
     window.addEventListener("scroll", onScroll, false);
     return () => window.removeEventListener("scroll", onScroll, false);
-  }, [filter, offset]);
+  }, [filter, offset, getMoreIssues]);
 
   return (  
     <div className="results">
