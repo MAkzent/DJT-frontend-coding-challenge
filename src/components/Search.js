@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import SearchIcon from '../assets/icons/search.svg';
+import ReactSVG from 'react-svg'
+import '../styles/Search.scss'
 
 const Search = ({ setRepoLink, getIssues }) => {
   const [input, setInput] = useState("");
@@ -17,13 +20,13 @@ const Search = ({ setRepoLink, getIssues }) => {
 
   return (
     <div className="search">
-      <h1>Github Issue Viewer</h1>
+      <h1 className="search__title">Github Issue Viewer</h1>
       <form className="search__form" onSubmit={(e) => validateUrl(e)}>
-        <input type="text" className="search__input" value={input} onChange={(e)=>setInput(e.target.value)} />
+        <ReactSVG className="search__icon" src={SearchIcon} />
+        <input type="text" className="search__input" value={input} onChange={(e)=>setInput(e.target.value)} placeholder="Paste a link to a Github repo!"/>
       </form>
     </div>
   )
 }
   
-
 export default Search;

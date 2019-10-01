@@ -1,0 +1,37 @@
+@import './Styles.scss';
+
+.search {
+  background-color: $pink;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .search__title {
+    font-family: "Montserrat Bold";
+    font-size: 4em;
+    color: white;
+    margin-bottom: 0.5em;
+  }
+  .search__form {
+    position: relative;
+  }
+  .search__input {
+    width: 720px;
+    font-family: "Montserrat Light";
+    font-size: 2em;
+    padding: 18px 18px 18px 70px;
+    &::placeholder {
+      color: $greyLight;
+    }
+  }
+  .search__icon {
+    position: absolute;
+    top: 17px;
+    left: 17px;
+    fill: $greyLight;
+    svg {
+      height: 36px;
+    }
+  }
+}

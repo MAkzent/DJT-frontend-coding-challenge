@@ -1,0 +1,40 @@
+// COLORS 
+$blue: #3F51b5;
+$blueDark: #1A237E;
+$pink: #E91E63;
+$pinkDark: #880E4F;
+$greyLight: #CFD8DC;
+$grey: #607D8B;
+$greyDark: #455A64;
+
+// FONTS
+@font-face {
+  font-family: 'Montserrat Bold';
+  src:  url('../assets/fonts/montserrat-bold.woff2') format('woff2'),
+        url('../assets/fonts/montserrat-bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Montserrat Regular';
+  src:  url('../assets/fonts/montserrat-regular.woff2') format('woff2'),
+        url('../assets/fonts/montserrat-regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'Montserrat Light';
+  src:  url('../assets/fonts/montserrat-light.woff2') format('woff2'),
+        url('../assets/fonts/montserrat-light.woff') format('woff');
+}
+
+// GENERAL UNIVERSAL STYLES
+div, input {
+  box-sizing: border-box;
+}
+body {
+  font-size: 12px;
+  font-family: "Montserrat Regular";
+  color: $greyDark;
+}
+input {
+  outline: none;
+  border: none;
+  color: $greyDark;
+}
