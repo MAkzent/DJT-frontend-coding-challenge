@@ -32,6 +32,7 @@ const Results = ({ issuesData, filter, setFilter, getMoreIssues, offset, clearDa
           </button>
       </div>
       <div className="results__issues">
+        { issuesData.length === 0 && <h1>No issues found.</h1>}
         {issuesData.map((issue, index) => <IssueItem issue={issue} key={index}/>)}
       </div>
     </div>
