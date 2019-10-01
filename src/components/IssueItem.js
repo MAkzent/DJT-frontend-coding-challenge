@@ -1,5 +1,8 @@
 import React from 'react';
 import ClampLines from 'react-clamp-lines';
+import ReactSVG from 'react-svg';
+import PullRequestIcon from "../assets/icons/pull-request.svg";
+import ClosedIcon from "../assets/icons/issue-closed.svg";
 import '../styles/IssueItem.scss';
 
 const IssueItem = ({ issue }) => {
@@ -7,11 +10,15 @@ const IssueItem = ({ issue }) => {
   return (
     <div className="issueItem">
       <div className="issueItem__top">
+        <div className="issueItem__icons">
+          { !!issue.pull_request && <ReactSVG className="issueItem__icon" src={PullRequestIcon} /> }
+          { issue.state === "closed" && <ReactSVG className="issueItem__icon" src={ClosedIcon} /> }
+        </div>
         <ClampLines text={title} lines={2} ellipsis="..." buttons={false} />
       </div>
       <div className="issueItem__bottom">
         <div className="issueItem__bodyText">
-          <p>{ body }</p>
+          { !!body ? <p>{ body }</p> : <p aria-disabled="true">No description provided.</p> }
         </div>
         <div className="issueItem__labels">
           { labels.map((label, index) => <div key={index} className="issueItem__label">• { label.name }</div> )}

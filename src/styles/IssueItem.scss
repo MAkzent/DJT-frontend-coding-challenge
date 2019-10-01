@@ -13,6 +13,7 @@
     font-size: 1.5em;
     line-height: 1.3em;
     padding: 1em;
+    position: relative;
   }
   .issueItem__bottom {
     padding: 1em;
@@ -29,6 +30,9 @@
       font-size: 1em;
       line-height: 1.5em;
       overflow: hidden;
+      &[aria-disabled="true"] {
+        color: $greyLight;
+      }
     }
   }
   .issueItem__labels {
@@ -45,5 +49,20 @@
     margin: 0 5px 5px 0;
     padding: 3px 5px;
     border-radius: 5px;
+  }
+  .issueItem__icons {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    .issueItem__icon {
+      fill: $blueDark;
+      div {
+        height: 12px;
+        margin: 0 0 5px 0;
+      }
+      svg {
+        height: 12px;
+      }
+    }
   }
 }
