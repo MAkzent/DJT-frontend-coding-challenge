@@ -4,28 +4,37 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 50px 0;
-  .results__issues {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;;
-    flex-wrap: wrap;
+  position: relative;
+}
+.results__issues {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;;
+  flex-wrap: wrap;
+  padding-top: 25px;
+  h1 {
+    padding-top: 100px;
+    font-size: 2em;
   }
 }
 .results__filter {
   display: flex;
   flex-direction: row;
   .results__filterButton {
-    border: none;
-    outline: none;
     color: $grey;
-    background-color: transparent;
     font-family: "Montserrat Regular";
     font-size: 1em;
-    &:hover {
-      cursor: pointer;
-    }
     &[aria-pressed=true] {
       color: $pink;
     }
+  }
+}
+.results__closeButton {
+  position: absolute;
+  top: 50px;
+  right: 0px;
+  svg {
+    height: 30px;
+    fill: $grey;
   }
 }

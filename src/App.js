@@ -9,7 +9,7 @@ import Header from './components/Header.js';
 
 const App = () => {
   const [issuesData, setIssuesData] = useState([]);
-  const [repoLink, setRepoLink] = useState({});
+  const [repoLink, setRepoLink] = useState(null);
   const [filter, setFilter] = useState("all");
   const [offset, setOffset] = useState(1);
 
@@ -32,23 +32,26 @@ const App = () => {
       }
     }
   }
-
   const getMoreIssues = () => {
-    console.log(offset);
     getIssues({link: repoLink, filter, append: true, offset: offset + 1});
     setOffset((prevOffset) => prevOffset + 1);
   }
+  const clearData = () => {
+    setOffset(1);
+    setRepoLink(null);
+    setIssuesData([]);
+  }
 
   useEffect(() => {
-    if (!!repoLink.pathname) getIssues({link: repoLink, filter});
+    if (!!repoLink) getIssues({link: repoLink, filter});
   }, [repoLink, filter])
 
   return (
     <div className="app">
-      { issuesData.length > 0 ?
+      { !!repoLink ?
         <>
         <Header repoLink={repoLink} />
-        <Results issuesData={issuesData} filter={filter} setFilter={setFilter} getMoreIssues={getMoreIssues} offset={offset} />
+        <Results issuesData={issuesData} filter={filter} setFilter={setFilter} getMoreIssues={getMoreIssues} offset={offset} clearData={clearData} />
         </>
       : 
         <Search setRepoLink={setRepoLink} getIssues={getIssues} />
