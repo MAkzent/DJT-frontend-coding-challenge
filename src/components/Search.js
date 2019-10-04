@@ -11,8 +11,10 @@ const Search = ({ setRepoLink, getIssues }) => {
     e.preventDefault();
     try {
       const url = new URL(input);
+      if (!url.hostname.includes("github.com")) return setError("Please enter a url from Github.");
+      if ((url.pathname.match(/[/]/g) || []).length < 2) return setError("Please enter a url matching this format: http://www.github.com/$OWNER/$REPO")
       setRepoLink(url);
-      getIssues({link: url});
+      getIssues({link: url});      
     } catch (err) {
       setError("Please enter a valid URL.");
     }

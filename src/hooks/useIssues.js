@@ -8,8 +8,9 @@ const useIssues = () => {
   const [offset, setOffset] = useState(1);
   
   const getIssues = async ({link, filter = "all", append = false, offset = 1 }) => {
+    const pathArray = link.pathname.split("/");
     if (filter === "pull") {
-      const { data } = await axios.get(`https://api.github.com/repos${link.pathname}/issues?page=${offset}`);
+      const { data } = await axios.get(`https://api.github.com/repos/${pathArray[1]}/${pathArray[2]}/issues?page=${offset}`);
       if (append) {
         setIssuesData((prevData) => [...prevData, ...data.filter((issue) => !!issue.pull_request)]);
       } else {
@@ -17,7 +18,7 @@ const useIssues = () => {
         setIssuesData(data.filter((issue) => !!issue.pull_request))
       }
     } else {
-      const { data } = await axios.get(`https://api.github.com/repos${link.pathname}/issues?state=${filter}&page=${offset}`);
+      const { data } = await axios.get(`https://api.github.com/repos/${pathArray[1]}/${pathArray[2]}/issues?state=${filter}&page=${offset}`);
       if (append) {
         setIssuesData((prevData => [...prevData, ...data]));
       } else {
