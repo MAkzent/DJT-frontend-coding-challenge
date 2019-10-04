@@ -4,7 +4,7 @@ import CloseIcon from '../assets/icons/close.svg'
 import IssueItem from './IssueItem.js';
 import '../styles/Results.scss';
 
-const Results = ({ issuesData, filter, setFilter, getMoreIssues, offset, clearData }) => {
+const Results = ({ issuesData, filter, setFilter, getMoreIssues, offset, clearData, isLoading }) => {
 
   useEffect(() => {
     const onScroll = () => {
@@ -16,6 +16,7 @@ const Results = ({ issuesData, filter, setFilter, getMoreIssues, offset, clearDa
 
   return (  
     <div className="results">
+      { isLoading && <div className="results__loading">Loading...</div> }
       <button className="results__closeButton" onClick={clearData}><ReactSVG src={CloseIcon} /></button>
       <div className="results__filter">
           <button className="results__filterButton" aria-pressed={filter === "all"} onClick={()=>setFilter("all")}>
@@ -32,7 +33,7 @@ const Results = ({ issuesData, filter, setFilter, getMoreIssues, offset, clearDa
           </button>
       </div>
       <div className="results__issues">
-        { issuesData.length === 0 && <h1>No issues found.</h1>}
+        { issuesData.length === 0 && !isLoading && <h1>No issues found.</h1>}
         {issuesData.map((issue, index) => <IssueItem issue={issue} key={index}/>)}
       </div>
     </div>

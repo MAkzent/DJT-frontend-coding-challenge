@@ -13,7 +13,7 @@ const App = () => {
     repoLink, setRepoLink, 
     issuesData, getIssues, getMoreIssues, clearData,
     filter, setFilter, 
-    offset
+    offset, isLoading
   } = useIssues();
 
   return (
@@ -21,7 +21,7 @@ const App = () => {
       { !!repoLink ?
         <>
         <Header repoLink={repoLink} />
-        <Results issuesData={issuesData} filter={filter} setFilter={setFilter} getMoreIssues={getMoreIssues} offset={offset} clearData={clearData} />
+        <Results issuesData={issuesData} filter={filter} setFilter={setFilter} getMoreIssues={getMoreIssues} offset={offset} clearData={clearData} isLoading={isLoading}/>
         </>
       : 
         <Search setRepoLink={setRepoLink} getIssues={getIssues} />
