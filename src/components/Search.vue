@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Github Issue Viewer</h1>
-    <form>
+    <form @submit.prevent="handleSubmit">
       <input type="text" placeholder="Paste a link to a Github Repo!" />
       <button>Search</button>
     </form>
@@ -10,7 +10,12 @@
 
 <script>
 export default {
-  name: "Search"
+  name: "Search",
+  methods: {
+    handleSubmit() {
+      console.log("search");
+    }
+  }
 };
 </script>
 
