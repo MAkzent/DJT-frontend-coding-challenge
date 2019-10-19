@@ -1,16 +1,28 @@
 <template>
   <div id="app">
-    <Search />
+    <search @add:url="addUrl"></search>
+    <results v-bind:url="url"></results>
   </div>
 </template>
 
 <script>
-import Search from "./components/Search.vue";
-
+import Search from "./components/Search";
+import Results from "./components/Results";
 export default {
   name: "app",
   components: {
-    Search
+    search: Search,
+    results: Results
+  },
+  data() {
+    return {
+      url: ""
+    };
+  },
+  methods: {
+    addUrl(url) {
+      this.url = url;
+    }
   }
 };
 </script>
@@ -18,17 +30,23 @@ export default {
 <style>
 html,
 body {
+  margin: 0px;
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+nav {
   background-color: #e91e63;
+  height: 10vh;
 }
 #app {
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #ffffff;
 }
 </style>
