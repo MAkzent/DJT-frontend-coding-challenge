@@ -61,11 +61,12 @@ export default {
     },
     async onSubmit() {
       const vm = this
-      const [owner, name] = vm.parseURL(vm.url)
       vm.$v.$touch()
+      if (vm.$v.invalid) return
+      const [owner, name] = vm.parseURL(vm.url)
 
-      const valid = !vm.$v.invalid && (await vm.isValidRepo({ owner, name }))
-      if (valid) {
+      const exists = await vm.isValidRepo({ owner, name })
+      if (exists) {
         await vm.$store.dispatch('issues/setRepo', { owner, name })
         vm.$router.push('/results')
       } else {
