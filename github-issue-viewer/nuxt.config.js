@@ -23,7 +23,6 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
   css: ['@assets/styles/global.scss', '@assets/styles/normalize.css'],
   styleResources: {
     scss: ['~assets/styles/mixins.scss']

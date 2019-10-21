@@ -4,6 +4,7 @@
       v-for="filter in filters"
       :key="filter"
       :class="[{ active: filter === currentFilter }, filterClass]"
+      :data-filter="filter"
       @click="onFilter"
     >
       {{ format(filter) }}
@@ -31,7 +32,7 @@ export default {
       return filter === 'Pull Request' ? 'Pull Requests' : `${filter} Issues`
     },
     onFilter(event) {
-      const [filter] = event.target.textContent.match(
+      const [filter] = event.target.dataset.filter.match(
         /(All|Open|Closed|Pull Request)/
       )
       this.$emit('filter', filter.toLowerCase())
