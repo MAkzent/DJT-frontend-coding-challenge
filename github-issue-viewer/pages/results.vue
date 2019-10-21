@@ -11,7 +11,12 @@
     </header>
     <nav>
       <nuxt-link to="/">
-        <CloseIcon class="close-icon" />
+        <div class="search-link">
+          <span class="search-link-icon">
+            <SearchIcon class="search-icon" />
+          </span>
+          <span class="search-link-text">Search</span>
+        </div>
       </nuxt-link>
     </nav>
     <main>
@@ -22,14 +27,14 @@
 <script>
 import { mapState } from 'vuex'
 import IssueList from '../components/IssueList'
-import CloseIcon from '~/assets/icons/close.svg'
 import LinkIcon from '~/assets/icons/link.svg'
+import SearchIcon from '~/assets/icons/search.svg'
 
 export default {
   components: {
-    CloseIcon,
     IssueList,
-    LinkIcon
+    LinkIcon,
+    SearchIcon
   },
   filters: {
     formatURL(repo) {
@@ -127,19 +132,38 @@ nav {
     padding-top: 3em;
   }
 
-  .close-icon {
-    fill: #607d8b;
-    height: 1.5em;
-    width: 1.5em;
+  .search-link {
+    border: 1px solid #607d8b;
+    border-radius: 8px;
+    color: #607d8b;
+    display: flex;
+    padding: 0.5em 1em 0.75em 1em;
+  }
 
-    @include for-tablet-portrait-up {
-      height: 2em;
-      width: 2em;
-    }
+  .search-icon {
+    fill: #607d8b;
+    height: 0.75em;
+    margin-right: 4px;
+    width: 0.75em;
 
     @include for-tablet-landscape-up {
-      height: 2.5em;
-      width: 2.5em;
+      height: 1em;
+      margin-right: 8px;
+      width: 1em;
+    }
+  }
+
+  .search-link-icon,
+  .search-link-text {
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+  .search-link-text {
+    font-size: 10px;
+
+    @include for-tablet-landscape-up {
+      font-size: 12px;
     }
   }
 }
