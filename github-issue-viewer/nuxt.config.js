@@ -24,6 +24,11 @@ export default {
    ** Global CSS
    */
   css: [],
+  css: ['~assets/styles/global.scss', '~assets/styles/normalize.css'],
+  styleResources: {
+    scss: ['~assets/styles/mixins.scss']
+  },
+
   /*
    ** Plugins to load before mounting the App
    */
@@ -33,7 +38,8 @@ export default {
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/style-resources'
   ],
   /*
    ** Nuxt.js modules
