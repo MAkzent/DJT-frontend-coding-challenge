@@ -3,7 +3,7 @@
     <h1 class="search-title">
       GitHub Issue Viewer
     </h1>
-    <BaseInput
+    <SearchInput
       v-model="url"
       class="search-input"
       type="url"
@@ -28,12 +28,16 @@
 <script>
 import parse from 'url-parse'
 import { required, url } from 'vuelidate/lib/validators'
+import SearchInput from '../components/SearchInput'
 import GithubService from '@/services/Github.js'
 
 // TODO add global error styles
 const githubURL = (value) => /^(https:\/\/)(www\.)?github.com(.*)/.test(value)
 
 export default {
+  components: {
+    SearchInput
+  },
   data() {
     return {
       url: '',
