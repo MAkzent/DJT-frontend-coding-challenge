@@ -38,7 +38,7 @@ export default {
   },
   filters: {
     formatURL(repo) {
-      return ` https://github.com/${repo.owner}/${repo.name}`
+      return ` https://github.com/${repo.owner}/${repo.name}/issues`
     }
   },
   computed: mapState({
