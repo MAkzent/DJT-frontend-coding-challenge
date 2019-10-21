@@ -137,7 +137,7 @@ nav {
     border-radius: 8px;
     color: #607d8b;
     display: flex;
-    padding: 0.5em 1em 0.75em 1em;
+    padding: 0.5em 1em 0.5em 1em;
   }
 
   .search-icon {
