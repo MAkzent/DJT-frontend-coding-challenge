@@ -1,22 +1,13 @@
 # github-issue-viewer
 
-> The slickest viewer you&#39;ve ever seen
+Welcome! Contained in here you will find a slick GitHub Issues Explorer. Just enter a valid GitHub repository URL (e.g. https://github.com/vuejs/vue) and voila! To get started, see below:
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 $ npm run install
 
-# serve with hot reload at localhost:3000
+# run the explorer on port 3000
 $ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
 ```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
