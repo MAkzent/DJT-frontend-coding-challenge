@@ -1,59 +1,27 @@
 <template>
   <div class="container">
-    <div>
-      <h1 class="title">
-        github-issue-viewer
-      </h1>
-      <h2 class="subtitle">
-        The slickest viewer you&#39;ve ever seen
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+    <Search />
   </div>
 </template>
-
 <script>
-export default {}
+import Search from '../components/Search'
+export default {
+  components: {
+    Search
+  }
+}
 </script>
-
-<style>
+<style lang="scss">
 .container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  background-color: #e91e63;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  min-width: 100vw;
+  min-height: 100vh;
   text-align: center;
-}
-
-.title {
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
 }
 </style>

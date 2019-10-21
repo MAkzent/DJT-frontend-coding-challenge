@@ -24,7 +24,7 @@ export default {
    ** Global CSS
    */
   css: [],
-  css: ['~assets/styles/global.scss', '~assets/styles/normalize.css'],
+  css: ['@assets/styles/global.scss', '@assets/styles/normalize.css'],
   styleResources: {
     scss: ['~assets/styles/mixins.scss']
   },
@@ -32,7 +32,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~/plugins/global.js'],
   /*
    ** Nuxt.js dev-modules
    */
