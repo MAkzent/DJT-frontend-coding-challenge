@@ -43,7 +43,6 @@ export default {
 <style lang="scss">
 .filter-list {
   display: flex;
-  justify-content: center;
   list-style-type: none;
   margin-bottom: 2em;
 

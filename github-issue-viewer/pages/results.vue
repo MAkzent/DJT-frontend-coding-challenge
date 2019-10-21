@@ -123,13 +123,13 @@ nav {
   display: flex;
   justify-content: flex-end;
   padding-bottom: 1em;
-  padding-right: 1em;
-  padding-top: 1em;
+  padding-right: 1.5em;
+  padding-top: 1.5em;
   width: 100%;
 
   @include for-tablet-portrait-up {
-    padding-right: 3em;
-    padding-top: 3em;
+    padding-right: 2em;
+    padding-top: 2em;
   }
 
   .search-link {
