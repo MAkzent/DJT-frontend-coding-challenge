@@ -1,0 +1,151 @@
+<template>
+  <fragment>
+    <header>
+      <nuxt-link to="/" class="title">
+        <h1>Github Issue Viewer</h1>
+      </nuxt-link>
+      <a class="repoURL" target="_blank" :href="repo | formatURL">
+        <div>View on GitHub</div>
+        <LinkIcon />
+      </a>
+    </header>
+    <nav>
+      <nuxt-link to="/">
+        <CloseIcon class="close-icon" />
+      </nuxt-link>
+    </nav>
+    <main>
+      <IssueList />
+    </main>
+  </fragment>
+</template>
+<script>
+import { mapState } from 'vuex'
+import IssueList from '../components/IssueList'
+import CloseIcon from '~/assets/icons/close.svg'
+import LinkIcon from '~/assets/icons/link.svg'
+
+export default {
+  components: {
+    CloseIcon,
+    IssueList,
+    LinkIcon
+  },
+  filters: {
+    formatURL(repo) {
+      return ` https://github.com/${repo.owner}/${repo.name}`
+    }
+  },
+  computed: mapState({
+    repo: (state) => state.issues.repo
+  }),
+  async fetch({ store, error }) {
+    try {
+      await store.dispatch('issues/fetchIssues')
+    } catch (err) {
+      error({
+        statusCode: 503,
+        message: 'Unable to retrieve issues at this time. Please try again.'
+      })
+    }
+  }
+}
+</script>
+<style lang="scss">
+.title {
+  grid-area: title;
+  color: #fff;
+
+  h1 {
+    padding-top: 1em;
+    font-size: 28px;
+
+    @include for-tablet-portrait-up {
+      padding: 1em;
+      font-size: 32px;
+    }
+
+    @include for-tablet-landscape-up {
+      font-size: 48px;
+      padding-left: 1.5em;
+    }
+  }
+}
+
+.repoURL {
+  align-items: center;
+  color: #880e4f;
+  display: flex;
+  font-size: 16px;
+  font-weight: 100;
+  grid-area: repoURL;
+  padding: 1em;
+
+  svg {
+    height: 0.9em;
+    margin-left: 8px;
+    width: 0.9em;
+    path {
+      fill: #880e4f;
+    }
+  }
+
+  @include for-tablet-landscape-up {
+    font-size: 24px;
+    padding-right: 1.5em;
+  }
+}
+
+header {
+  align-items: center;
+  background-color: #e91e63;
+  display: grid;
+  justify-items: center;
+
+  @include for-phone-only {
+    grid-template-areas:
+      'title'
+      'repoURL';
+  }
+
+  @include for-tablet-portrait-up {
+    grid-template-areas: 'title repoURL';
+  }
+}
+
+nav {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 1em;
+  padding-right: 1em;
+  padding-top: 1em;
+  width: 100%;
+
+  @include for-tablet-portrait-up {
+    padding-right: 3em;
+    padding-top: 3em;
+  }
+
+  .close-icon {
+    fill: #607d8b;
+    height: 1.5em;
+    width: 1.5em;
+
+    @include for-tablet-portrait-up {
+      height: 2em;
+      width: 2em;
+    }
+
+    @include for-tablet-landscape-up {
+      height: 2.5em;
+      width: 2.5em;
+    }
+  }
+}
+
+main {
+  margin: 0 auto;
+  width: 85vw;
+}
+</style>
