@@ -57,23 +57,18 @@ export default {
 }
 </script>
 <style lang="scss">
-.title {
-  grid-area: title;
-  color: #fff;
+header {
+  align-items: center;
+  background-color: #e91e63;
+  display: grid;
+  justify-items: center;
+  grid-template-areas:
+    'title'
+    'repoURL';
 
-  h1 {
-    padding-top: 1em;
-    font-size: 28px;
-
-    @include for-tablet-portrait-up {
-      padding: 1em;
-      font-size: 32px;
-    }
-
-    @include for-tablet-landscape-up {
-      font-size: 48px;
-      padding-left: 1.5em;
-    }
+  @include for-tablet-portrait-up {
+    grid-template-areas: 'title repoURL';
+    justify-items: start;
   }
 }
 
@@ -95,26 +90,32 @@ export default {
     }
   }
 
+  @include for-tablet-portrait-up {
+    justify-self: self-end;
+    padding-right: 1.5em;
+  }
+
   @include for-tablet-landscape-up {
     font-size: 24px;
     padding-right: 1.5em;
   }
 }
+.title {
+  grid-area: title;
+  color: #fff;
 
-header {
-  align-items: center;
-  background-color: #e91e63;
-  display: grid;
-  justify-items: center;
+  h1 {
+    padding-top: 1em;
+    font-size: 28px;
 
-  @include for-phone-only {
-    grid-template-areas:
-      'title'
-      'repoURL';
-  }
+    @include for-tablet-portrait-up {
+      padding: 1em;
+      font-size: 32px;
+    }
 
-  @include for-tablet-portrait-up {
-    grid-template-areas: 'title repoURL';
+    @include for-tablet-landscape-up {
+      font-size: 48px;
+    }
   }
 }
 
