@@ -28,16 +28,16 @@ As a general comment, nuxt comes with great separations of concerns which booste
 
 > ## How long did the assignment take (in hours)? Please break down your answer into buckets (e.g. "Learning Framework", "Coding", "Debugging").
 
-Learning Nuxt / Vue - 2 hours
-System Design - 2 hours
-Implementation - 1 hour
-Debugging / Tweaking CSS! - 1 hour
+- Learning Nuxt / Vue - 2 hours
+- System Design - 2 hours
+- Implementation - 1 hour
+- Debugging / Tweaking CSS! - 1 hour
 
 > ## If you could go back and give yourself advice at the beginning of the project, what would it be?
 
 - Design for mobile first! It makes adjusting styles for larger screens more intuitive as you tweak rather than wholesale adjust (which is hard to avoid if going from large -> small).
 - Deprioritize smaller parts of the UI Design and stay disciplined in focus towards the core parts of the scaffold (tweak last).
-- Decouple Design and Logic as much as possible -> priortize base UI components that can funnel into logical components (and use layouts!)
+- Decouple Design and Logic as much as possible -> prioritize base UI components that can funnel into logical components (and use layouts!)
 
 > ## Did you learn anything new?
 
@@ -50,5 +50,5 @@ Debugging / Tweaking CSS! - 1 hour
 
 > ## Are there any significant web development-related skills that you possess that were not demonstrated in this exercise? If so, what are they?
 
-- The challenge being relatively simple, there are many design decisions that arise when working on larger apps that were absent here. These are hard to gauge to begin with, but I feel a contract trial would further shed light on my ability contribute to production, mid to large scale apps.
+- The challenge being relatively simple, there are many design decisions that arise when working on larger apps that were absent here. These are hard to gauge to begin with, but I feel a contract trial would further shed light on my ability to contribute towards production, mid to large scale apps.
 - Data modelling, although again relatively simple here, is another area that I would love to showcase my depth in.
