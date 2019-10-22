@@ -62,7 +62,7 @@ export default {
     async onSubmit() {
       const vm = this
       vm.$v.$touch()
-      if (vm.$v.invalid) return
+      if (vm.$v.$invalid) return
       const [owner, name] = vm.parseURL(vm.url)
 
       const exists = await vm.isValidRepo({ owner, name })
