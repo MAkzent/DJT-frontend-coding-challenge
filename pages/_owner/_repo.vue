@@ -6,9 +6,9 @@
     </header>
     <RepoFilterMenu :active-menu="activeMenu" />
     <main class="content">
-      <BaseLoadingScreen v-if="status === 'loading'" />
-      <RepoErrorScreen v-if="status === 'failed'" />
-      <div v-else-if="dataForPage.length">
+      <BaseLoadingScreen v-if="status === 'loading'" key="loading-screen" />
+      <RepoErrorScreen v-else-if="status === 'failed'" key="error-screen" />
+      <div v-else-if="dataForPage.length" key="grid-screen">
         <transition-group name="card" class="card-grid" appear>
           <div v-for="issue in dataForPage" :key="issue.id" class="card-item">
             <BaseIssueCard
@@ -22,7 +22,7 @@
         </transition-group>
         <ThePagination :total-page-number="totalPageNumber" />
       </div>
-      <div v-else class="empty-result">
+      <div v-else key="empty-screen" class="empty-result">
         <p>
           There's no "{{ getMenuText(activeMenu).toLowerCase() }}" in
           {{ repoUrl }}.

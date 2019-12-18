@@ -4,12 +4,14 @@
       <div class="line-clamp">{{ title }}</div>
       <img
         v-if="isPullRequest"
+        key="pr-icon"
         src="~/assets/icons/pull-request.svg"
         class="icon"
         alt="pull request icon"
       />
       <img
         v-else-if="isClosed"
+        key="closed-issue-icon"
         src="~/assets/icons/issue-closed.svg"
         class="icon"
         alt="closed issue icon"
@@ -17,8 +19,10 @@
     </div>
     <div class="content">
       <div class="body">
-        <div v-if="body.length" class="line-clamp">{{ body }}</div>
-        <div v-else class="no-description">No description provided</div>
+        <div v-if="body.length" key="body" class="line-clamp">{{ body }}</div>
+        <div v-else key="empty-body" class="no-description">
+          No description provided
+        </div>
       </div>
       <div v-if="labels.length" class="labels">
         <span v-for="label in labels" :key="label.id" class="label">
