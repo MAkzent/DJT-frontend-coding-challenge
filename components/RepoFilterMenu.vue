@@ -31,7 +31,7 @@ export const MenuText = {
 }
 
 @Component
-export default class Repo extends Vue {
+export default class RepoFilterMenu extends Vue {
   @Prop({ type: String, required: true }) readonly activeMenu!: string
   menuList = Menu
 

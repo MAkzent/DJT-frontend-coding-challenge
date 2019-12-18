@@ -4,9 +4,10 @@
       <nuxt-link class="app-name" to="/">GitHub Issue Viewer</nuxt-link>
       <a :href="repoUrl" class="repo-url">{{ repoUrl }}</a>
     </header>
-    <TheFilterMenu :active-menu="activeMenu" />
+    <RepoFilterMenu :active-menu="activeMenu" />
     <main class="content">
-      <BaseLoadingScreen v-if="loading" />
+      <BaseLoadingScreen v-if="status === 'loading'" />
+      <RepoErrorScreen v-if="status === 'failed'" />
       <div v-else-if="dataForPage.length">
         <transition-group name="card" class="card-grid" appear>
           <div v-for="issue in dataForPage" :key="issue.id" class="card-item">
@@ -36,8 +37,9 @@ import { Vue, Component } from 'nuxt-property-decorator'
 import axios from 'axios'
 import BaseIssueCard from '~/components/BaseIssueCard.vue'
 import BaseLoadingScreen from '~/components/BaseLoadingScreen.vue'
-import TheFilterMenu, { Menu, MenuText } from '~/components/TheFilterMenu.vue'
+import RepoFilterMenu, { Menu, MenuText } from '~/components/RepoFilterMenu.vue'
 import ThePagination from '~/components/ThePagination.vue'
+import RepoErrorScreen from '~/components/RepoErrorScreen.vue'
 import { Issue } from '~/serverMiddleware/api'
 
 const ITEM_PER_PAGE = 20
@@ -46,21 +48,26 @@ const ITEM_PER_PAGE = 20
   components: {
     BaseIssueCard,
     BaseLoadingScreen,
-    TheFilterMenu,
-    ThePagination
+    RepoFilterMenu,
+    ThePagination,
+    RepoErrorScreen
   },
   transition: 'bounce'
 })
 export default class Repo extends Vue {
   data: Issue[] = []
-  loading = true
+  status: 'loading' | 'success' | 'failed' = 'loading'
 
   async mounted() {
-    const { data } = await axios.get(
-      `/api/repos/${this.owner}/${this.repo}/issues`
-    )
-    this.data = data
-    this.loading = false
+    try {
+      const { data } = await axios.get(
+        `/api/repos/${this.owner}/${this.repo}/issues`
+      )
+      this.data = data
+      this.status = 'success'
+    } catch (error) {
+      this.status = 'failed'
+    }
   }
 
   get owner() {

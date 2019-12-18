@@ -21,15 +21,19 @@ function getAllIssues(owner: string, repo: string): Promise<Issue[]> {
   )
 }
 
-const apiServerMiddleware: ServerMiddleware = async function(req, res) {
+const apiServerMiddleware: ServerMiddleware = async function(req, res, next) {
   if (!req.url) {
     res.end()
     return
   }
   const [, , owner, repo] = req.url.split('/')
-  const issues = await getAllIssues(owner, repo)
-  res.write(JSON.stringify(issues))
-  res.end()
+  try {
+    const issues = await getAllIssues(owner, repo)
+    res.write(JSON.stringify(issues))
+    res.end()
+  } catch (error) {
+    next(new Error('Unable to get issues.'))
+  }
 }
 
 export default {
