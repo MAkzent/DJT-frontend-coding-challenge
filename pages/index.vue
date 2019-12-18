@@ -23,18 +23,21 @@
 
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator'
+import { getGithubRepoPathname } from '~/utils/url'
 
 @Component({ transition: 'bounce' })
 export default class Index extends Vue {
   url = ''
 
-  // TODO: Validate GitHub URL.
   goToRepoPage(url: string) {
-    const splittedUrl = url.split('github.com')
-
-    this.$router.push({
-      path: splittedUrl[splittedUrl.length - 1]
-    })
+    try {
+      const pathname = getGithubRepoPathname(url)
+      this.$router.push({
+        path: pathname
+      })
+    } catch (error) {
+      alert(error.message)
+    }
   }
 }
 </script>
