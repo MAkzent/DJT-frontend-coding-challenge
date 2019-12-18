@@ -189,6 +189,10 @@ export default class Repo extends Vue {
   transition: transform 0.4s;
   display: inline-block;
   width: 100%;
+
+  @media (max-width: 480px) {
+    width: calc(100vw - 48px);
+  }
 }
 
 .card-enter,
