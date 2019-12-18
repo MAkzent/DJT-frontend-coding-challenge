@@ -12,6 +12,7 @@ module.exports = {
     'plugin:vue-a11y/recommended',
     '@nuxtjs',
     '@nuxtjs/eslint-config-typescript',
+    'plugin:jest/recommended',
     'prettier',
     'prettier/@typescript-eslint',
     'prettier/vue',
@@ -25,6 +26,12 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off'
   },
   overrides: [
+    {
+      files: ['*.test.{js,ts}'],
+      env: {
+        jest: true
+      }
+    },
     {
       files: ['*.js'],
       rules: {

@@ -3,7 +3,7 @@
     <ul class="menu-list">
       <li v-for="menu in menuList" :key="menu">
         <nuxt-link
-          :to="{ query: { ...query, menu } }"
+          :to="{ query: { ...query, menu, page: 1 } }"
           :class="{ active: menu === activeMenu }"
           class="menu-item"
           >{{ getMenuText(menu) }}</nuxt-link

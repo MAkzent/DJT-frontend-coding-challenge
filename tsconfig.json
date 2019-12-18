@@ -1,28 +1,27 @@
 {
-    "compilerOptions": {
-      "target": "es2018",
-      "module": "esnext",
-      "moduleResolution": "node",
-      "lib": ["esnext", "esnext.asynciterable", "dom"],
-      "esModuleInterop": true,
-      "allowJs": true,
-      "sourceMap": true,
-      "strict": true,
-      "noUnusedLocals": true,
-      "noUnusedParameters": true,
-      "noImplicitReturns": true,
-      "noFallthroughCasesInSwitch": true,
-      "forceConsistentCasingInFileNames": true,
-      "noEmit": true,
-      "baseUrl": ".",
-      "paths": {
-        "~/*": ["./*"],
-        "@/*": ["./*"]
-      },
-      "types": ["@types/node", "@nuxt/types"],
-      "downlevelIteration": true,
-      "experimentalDecorators": true
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": ["esnext", "esnext.asynciterable", "dom"],
+    "esModuleInterop": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./*"]
     },
-    "exclude": ["node_modules"]
-  }
-  
+    "types": ["@types/node", "@nuxt/types", "@types/jest"],
+    "downlevelIteration": true,
+    "experimentalDecorators": true
+  },
+  "exclude": ["node_modules"]
+}

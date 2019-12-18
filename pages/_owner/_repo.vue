@@ -7,16 +7,19 @@
     <TheFilterMenu :active-menu="activeMenu" />
     <main class="content">
       <BaseLoadingScreen v-if="loading" />
-      <div v-else-if="filteredData.length" class="card-grid">
-        <div v-for="issue in filteredData" :key="issue.id" class="card-item">
-          <BaseIssueCard
-            :title="issue.title"
-            :body="issue.body"
-            :labels="issue.labels"
-            :is-pull-request="!!issue.pull_request"
-            :is-closed="issue.state === 'closed'"
-          />
+      <div v-else-if="dataForPage.length">
+        <div class="card-grid">
+          <div v-for="issue in dataForPage" :key="issue.id" class="card-item">
+            <BaseIssueCard
+              :title="issue.title"
+              :body="issue.body"
+              :labels="issue.labels"
+              :is-pull-request="!!issue.pull_request"
+              :is-closed="issue.state === 'closed'"
+            />
+          </div>
         </div>
+        <ThePagination :total-page-number="totalPageNumber" />
       </div>
       <div v-else class="empty-result">
         <p>
@@ -34,10 +37,18 @@ import axios from 'axios'
 import BaseIssueCard from '~/components/BaseIssueCard.vue'
 import BaseLoadingScreen from '~/components/BaseLoadingScreen.vue'
 import TheFilterMenu, { Menu, MenuText } from '~/components/TheFilterMenu.vue'
+import ThePagination from '~/components/ThePagination.vue'
 import { Issue } from '~/serverMiddleware/api'
 
+const ITEM_PER_PAGE = 20
+
 @Component({
-  components: { BaseIssueCard, BaseLoadingScreen, TheFilterMenu },
+  components: {
+    BaseIssueCard,
+    BaseLoadingScreen,
+    TheFilterMenu,
+    ThePagination
+  },
   transition: 'bounce'
 })
 export default class Repo extends Vue {
@@ -86,6 +97,16 @@ export default class Repo extends Vue {
 
   getMenuText(menu: Menu) {
     return MenuText[menu]
+  }
+
+  get totalPageNumber() {
+    return Math.ceil(this.filteredData.length / ITEM_PER_PAGE)
+  }
+
+  get dataForPage() {
+    const currentPage = +this.$route.query.page || 1
+    const start = (currentPage - 1) * ITEM_PER_PAGE
+    return this.filteredData.slice(start, start + ITEM_PER_PAGE)
   }
 }
 </script>
