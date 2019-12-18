@@ -4,20 +4,30 @@ module.exports = {
     browser: true,
     node: true
   },
-  parserOptions: {
-    parser: 'babel-eslint'
-  },
   extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
     '@nuxtjs',
+    '@nuxtjs/eslint-config-typescript',
     'prettier',
+    'prettier/@typescript-eslint',
     'prettier/vue',
     'plugin:prettier/recommended',
     'plugin:nuxt/recommended'
   ],
-  plugins: [
-    'prettier'
-  ],
+  plugins: ['prettier'],
   // add your custom rules here
   rules: {
-  }
+    '@typescript-eslint/camelcase': ['error', { properties: 'never' }],
+    '@typescript-eslint/explicit-function-return-type': 'off'
+  },
+  overrides: [
+    {
+      files: ['*.js'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off'
+      }
+    }
+  ]
 }
