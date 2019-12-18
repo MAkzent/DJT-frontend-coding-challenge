@@ -3,13 +3,18 @@
 ### Planning
 
 > What do you think are the greatest areas of risk in completing the project?
--
+- Lack of VueJS/NuxtJS experience
+- Lack of GitHub API experience
 
 > What changes/additions would you make to the design?
--
+- Use Zeplin to communicate the design to developer instead of what's provided in the repo.
+- URL at the top right is very hard to notice. Probably make it more like a page title
+- Add input color for the first page (only placeholder color is provided)
 
 > List a two or three features that you would consider implementing in the future that would add significant value to the project.
--
+- Issue page
+- Click label to filter by them
+- Search suggestion
 
 ---
 
