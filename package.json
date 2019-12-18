@@ -25,7 +25,8 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/pwa": "^3.0.0-0",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "nuxt-property-decorator": "^2.5.0"
   },
   "devDependencies": {
     "@nuxt/typescript-build": "^0.5.1",
@@ -47,9 +48,11 @@
     "husky": "^2.6.0",
     "jest": "^24.1.0",
     "lint-staged": "^8.2.1",
+    "node-sass": "^4.13.0",
     "prettier": "^1.16.4",
+    "sass-loader": "^8.0.0",
     "stylelint": "^10.1.0",
-    "stylelint-config-prettier": "^8.0.0",
+    "stylelint-config-prettier": "^7.0.0",
     "stylelint-config-recommended-scss": "^4.1.0",
     "stylelint-config-standard": "^19.0.0",
     "stylelint-scss": "^3.13.0",

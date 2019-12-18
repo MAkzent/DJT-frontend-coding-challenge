@@ -4,10 +4,34 @@
   </div>
 </template>
 
-<style>
+<style lang="scss">
+@font-face {
+  font-family: Montserrat;
+  src: url('~assets/fonts/montserrat-bold.woff2') format('woff2'),
+    url('~assets/fonts/montserrat-bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: url('~assets/fonts/montserrat-light.woff2') format('woff2'),
+    url('~assets/fonts/montserrat-light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: url('~assets/fonts/montserrat-regular.woff2') format('woff2'),
+    url('~assets/fonts/montserrat-regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: Montserrat, 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -15,41 +39,45 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  line-height: 1.4;
+}
+
+body {
+  overflow: hidden;
 }
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
 }
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+.bounce-enter-active {
+  animation: bounce-in 0.4s;
 }
 
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+.bounce-leave-active {
+  animation: bounce-out 0.25s;
 }
 
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+@keyframes bounce-out {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0);
+  }
 }
 </style>

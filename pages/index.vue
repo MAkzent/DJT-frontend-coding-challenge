@@ -1,42 +1,47 @@
 <template>
   <div class="container">
-    <div>
-      <logo />
+    <div class="content">
       <h1 class="title">
-        github-issue-viewer
+        GitHub Issue Viewer
       </h1>
-      <h2 class="subtitle">
-        An app to view GitHub issues and PRs based on the URL.
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+      <div class="input-wrapper">
+        <img
+          src="~/assets/icons/search.svg"
+          class="search-icon"
+          alt="search icon"
+        />
+        <input
+          v-model="url"
+          class="input"
+          placeholder="Paste a link to a GitHub repo!"
+          @keydown.enter="goToRepoPage(url)"
+        />
       </div>
     </div>
   </div>
 </template>
 
-<script>
-import Logo from '~/components/Logo.vue'
+<script lang="ts">
+import { Vue, Component } from 'nuxt-property-decorator'
 
-export default {
-  components: {
-    Logo
+@Component({ transition: 'bounce' })
+export default class Index extends Vue {
+  url = ''
+
+  goToRepoPage(url: string) {
+    const splittedUrl = url.split('github.com')
+
+    // TODO: Navigate to the repo page (/:owner/:repo)
+    alert(splittedUrl[splittedUrl.length - 1])
   }
 }
 </script>
 
-<style>
+<style scoped lang="scss">
+@import '~/theme/colors';
+
 .container {
-  margin: 0 auto;
+  background: $color-red;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -44,25 +49,62 @@ export default {
   text-align: center;
 }
 
+.content {
+  max-width: 720px;
+  width: 100%;
+  margin: 0 24px;
+}
+
 .title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+  font-size: 48px;
+  color: $color-white;
+  margin-bottom: 24px;
+
+  @media (max-width: 600px) {
+    font-size: 32px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 24px;
+  }
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
+.input {
+  width: 100%;
+  height: 76px;
+  box-shadow: 0 12px 18px 0 rgba($color-dark-gray, 0.3);
+  background: $color-white;
+  border: none;
+  padding: 0 20px 0 76px;
+  font-size: 28px;
+  color: $color-gray;
+
+  &::placeholder {
+    color: $color-light-gray;
+    font-weight: 300;
+  }
+
+  @media (max-width: 480px) {
+    height: 48px;
+    padding: 0 16px 0 48px;
+    font-size: 16px;
+  }
 }
 
-.links {
-  padding-top: 15px;
+.input-wrapper {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  width: 28px;
+  top: 24px;
+  left: 24px;
+
+  @media (max-width: 480px) {
+    width: 20px;
+    top: 14px;
+    left: 14px;
+  }
 }
 </style>
