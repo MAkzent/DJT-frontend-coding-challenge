@@ -28,11 +28,13 @@ import { Vue, Component } from 'nuxt-property-decorator'
 export default class Index extends Vue {
   url = ''
 
+  // TODO: Validate GitHub URL.
   goToRepoPage(url: string) {
     const splittedUrl = url.split('github.com')
 
-    // TODO: Navigate to the repo page (/:owner/:repo)
-    alert(splittedUrl[splittedUrl.length - 1])
+    this.$router.push({
+      path: splittedUrl[splittedUrl.length - 1]
+    })
   }
 }
 </script>

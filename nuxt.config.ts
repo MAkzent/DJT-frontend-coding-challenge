@@ -63,5 +63,6 @@ export default {
     extend() {
       //
     }
-  }
+  },
+  serverMiddleware: ['~/serverMiddleware/api']
 }
