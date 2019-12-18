@@ -4,7 +4,17 @@
 
 ## Build Setup
 
-``` bash
+### Setup .env
+
+1. Copy `.env.example` into `.env`
+   ```bash
+   cp .env.example .env
+   ```
+2. [Create a GitHub token](https://github.com/settings/tokens/new?scopes=public_repo&description=GitHub%20Issue%20Viewer) and paste it after `GITHUB_TOKEN=` in `.env`. This is to avoid the GitHub API rate limit issue. With out it we can only make 60 requests per hour.
+
+### Available commands
+
+```bash
 # install dependencies
 $ yarn install
 
