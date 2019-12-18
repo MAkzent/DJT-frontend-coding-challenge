@@ -8,7 +8,7 @@
     <main class="content">
       <BaseLoadingScreen v-if="loading" />
       <div v-else-if="dataForPage.length">
-        <div class="card-grid">
+        <transition-group name="card" class="card-grid" appear>
           <div v-for="issue in dataForPage" :key="issue.id" class="card-item">
             <BaseIssueCard
               :title="issue.title"
@@ -18,7 +18,7 @@
               :is-closed="issue.state === 'closed'"
             />
           </div>
-        </div>
+        </transition-group>
         <ThePagination :total-page-number="totalPageNumber" />
       </div>
       <div v-else class="empty-result">
@@ -176,5 +176,21 @@ export default class Repo extends Vue {
   align-items: center;
   justify-content: center;
   color: $color-gray;
+}
+
+.card-item {
+  transition: transform 0.4s;
+  display: inline-block;
+  width: 100%;
+}
+
+.card-enter,
+.card-leave-to {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.card-leave-active {
+  position: absolute;
 }
 </style>
