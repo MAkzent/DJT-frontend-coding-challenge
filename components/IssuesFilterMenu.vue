@@ -21,14 +21,14 @@ export enum Menu {
   All = 'all',
   Open = 'open',
   Closed = 'closed',
-  Pr = 'pr'
+  Pr = 'pr',
 }
 
 export const MenuText = {
   [Menu.All]: 'All Issues',
   [Menu.Open]: 'Open Issues',
   [Menu.Closed]: 'Closed Issues',
-  [Menu.Pr]: 'Pull Request'
+  [Menu.Pr]: 'Pull Request',
 }
 
 @Component

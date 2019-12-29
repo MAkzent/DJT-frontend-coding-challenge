@@ -2,7 +2,7 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    node: true
+    node: true,
   },
   extends: [
     'eslint:recommended',
@@ -18,38 +18,38 @@ module.exports = {
     'prettier/@typescript-eslint',
     'prettier/vue',
     'plugin:prettier/recommended',
-    'plugin:nuxt/recommended'
+    'plugin:nuxt/recommended',
   ],
   plugins: ['prettier'],
   // add your custom rules here
   rules: {
     camelcase: 'off',
     '@typescript-eslint/camelcase': ['error', { properties: 'never' }],
-    '@typescript-eslint/explicit-function-return-type': 'off'
+    '@typescript-eslint/explicit-function-return-type': 'off',
   },
   overrides: [
     {
       files: ['*.test.{js,ts}'],
       env: {
-        jest: true
-      }
+        jest: true,
+      },
     },
     {
       files: ['*.js'],
       rules: {
-        '@typescript-eslint/no-var-requires': 'off'
-      }
+        '@typescript-eslint/no-var-requires': 'off',
+      },
     },
     {
       files: ['cypress/**/*.{ts,js}'],
       env: {
-        'cypress/globals': true
+        'cypress/globals': true,
       },
       rules: {
         'jest/expect-expect': 'off',
         'jest/valid-expect': 'off',
-        'jest/valid-expect-in-promise': 'off'
-      }
-    }
-  ]
+        'jest/valid-expect-in-promise': 'off',
+      },
+    },
+  ],
 }

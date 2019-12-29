@@ -1,0 +1,20 @@
+# Build and dependencies directories
+.nuxt/
+coverage/
+node_modules/
+docs/requirements/
+
+# Unsupported files
+.DS_Store
+.editorconfig
+.env
+.env.example
+.gitignore
+.prettierignore
+*.woff
+*.woff2
+*.svg
+*.ico
+*.png
+*.mp4
+yarn.lock

@@ -29,9 +29,9 @@ function isValidMenu(menu: unknown): menu is Menu {
 @Component({
   components: {
     IssuesFilterMenu,
-    IssuesCardList
+    IssuesCardList,
   },
-  transition: 'bounce'
+  transition: 'bounce',
 })
 export default class Issues extends Vue {
   get activeMenu(): Menu {

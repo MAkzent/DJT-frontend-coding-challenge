@@ -5,7 +5,7 @@ import Fastify from 'fastify'
 Dotenv.config()
 
 const octokit = new Octokit({
-  auth: process.env.GITHUB_TOKEN
+  auth: process.env.GITHUB_TOKEN,
 })
 
 const fastify = Fastify({ logger: true })
@@ -21,13 +21,13 @@ fastify.get<
   ) => {
     const {
       data,
-      headers: { link }
+      headers: { link },
     } = await octokit.issues.listForRepo({
       owner,
       repo,
       state,
       page,
-      per_page: perPage
+      per_page: perPage,
     })
     reply.header('link', link)
     return data
@@ -45,13 +45,13 @@ fastify.get<
   ) => {
     const {
       data,
-      headers: { link }
+      headers: { link },
     } = await octokit.pulls.list({
       owner,
       repo,
       state,
       page,
-      per_page: perPage
+      per_page: perPage,
     })
     reply.header('link', link)
     return data
@@ -62,7 +62,7 @@ fastify.ready()
 
 export default {
   path: '/api',
-  handler: fastify.server
+  handler: fastify.server,
 }
 
 export interface Label {

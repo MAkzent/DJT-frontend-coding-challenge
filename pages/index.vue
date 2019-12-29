@@ -33,7 +33,7 @@ export default class Index extends Vue {
     try {
       const { owner, repo } = getGithubRepoAndOwner(url)
       this.$router.push({
-        path: `/issues?owner=${owner}&repo=${repo}`
+        path: `/issues?owner=${owner}&repo=${repo}`,
       })
     } catch (error) {
       alert(error.message)

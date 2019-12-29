@@ -13,7 +13,9 @@
     "test": "jest",
     "type-check": "tsc",
     "type-check:cypress": "yarn type-check -p cypress",
-    "static-check": "yarn type-check && yarn type-check:cypress && yarn lint",
+    "format": "prettier --write '**'",
+    "format:check": "prettier --check '**'",
+    "static-check": "yarn format:check && yarn lint && yarn type-check && yarn type-check:cypress",
     "e2e": "cypress run",
     "e2e:dev": "cypress open"
   },

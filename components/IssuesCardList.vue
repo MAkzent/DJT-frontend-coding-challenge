@@ -40,7 +40,7 @@ import IssuesCardListEmptyScreen from '~/components/IssuesCardListEmptyScreen.vu
 import { Issue, PullRequest } from '~/serverMiddleware/api'
 import {
   listIssuesForRepo,
-  listPullRequestsForRepo
+  listPullRequestsForRepo,
 } from '~/serverMiddleware/client'
 import { getLastPageFromLinkHeaders } from '~/utils/githubPagination'
 
@@ -52,8 +52,8 @@ const ITEM_PER_PAGE = 30
     BaseLoadingScreen,
     IssuesCardListPagination,
     IssuesCardListErrorScreen,
-    IssuesCardListEmptyScreen
-  }
+    IssuesCardListEmptyScreen,
+  },
 })
 export default class IssuesCardList extends Vue {
   @Prop({ type: String, required: true }) readonly owner!: string
@@ -82,7 +82,7 @@ export default class IssuesCardList extends Vue {
     try {
       const {
         data,
-        headers: { link }
+        headers: { link },
       } = await this.fetchIssuesOrPullRequests()
       this.lastPage = getLastPageFromLinkHeaders(link)
       this.data = data
@@ -97,13 +97,13 @@ export default class IssuesCardList extends Vue {
       return listPullRequestsForRepo(this.owner, this.repo, {
         state: 'all',
         per_page: ITEM_PER_PAGE,
-        page: this.currentPage
+        page: this.currentPage,
       })
     } else {
       return listIssuesForRepo(this.owner, this.repo, {
         state: this.activeMenu,
         per_page: ITEM_PER_PAGE,
-        page: this.currentPage
+        page: this.currentPage,
       })
     }
   }
