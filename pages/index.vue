@@ -23,7 +23,7 @@
 
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator'
-import { getGithubRepoPathname } from '~/utils/url'
+import { getGithubRepoAndOwner } from '~/utils/url'
 
 @Component({ transition: 'bounce' })
 export default class Index extends Vue {
@@ -31,9 +31,9 @@ export default class Index extends Vue {
 
   goToRepoPage(url: string) {
     try {
-      const pathname = getGithubRepoPathname(url)
+      const { owner, repo } = getGithubRepoAndOwner(url)
       this.$router.push({
-        path: pathname
+        path: `/issues?owner=${owner}&repo=${repo}`
       })
     } catch (error) {
       alert(error.message)

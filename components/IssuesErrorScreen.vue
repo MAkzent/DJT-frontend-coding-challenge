@@ -12,7 +12,7 @@
 import { Vue, Component } from 'nuxt-property-decorator'
 
 @Component
-export default class RepoErrorScreen extends Vue {}
+export default class IssuesErrorScreen extends Vue {}
 </script>
 
 <style scoped lang="scss">

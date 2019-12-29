@@ -4,10 +4,10 @@
       <nuxt-link class="app-name" to="/">GitHub Issue Viewer</nuxt-link>
       <a :href="repoUrl" class="repo-url">{{ repoUrl }}</a>
     </header>
-    <RepoFilterMenu :active-menu="activeMenu" />
+    <IssuesFilterMenu :active-menu="activeMenu" />
     <main class="content">
       <BaseLoadingScreen v-if="status === 'loading'" key="loading-screen" />
-      <RepoErrorScreen v-else-if="status === 'failed'" key="error-screen" />
+      <IssuesErrorScreen v-else-if="status === 'failed'" key="error-screen" />
       <div v-else-if="data.length" key="grid-screen">
         <transition-group name="card" class="card-grid" appear>
           <div v-for="issueOrPr in data" :key="issueOrPr.id" class="card-item">
@@ -37,9 +37,12 @@ import { Vue, Component, Watch } from 'nuxt-property-decorator'
 import axios from 'axios'
 import BaseIssueCard from '~/components/BaseIssueCard.vue'
 import BaseLoadingScreen from '~/components/BaseLoadingScreen.vue'
-import RepoFilterMenu, { Menu, MenuText } from '~/components/RepoFilterMenu.vue'
+import IssuesFilterMenu, {
+  Menu,
+  MenuText
+} from '~/components/IssuesFilterMenu.vue'
 import ThePagination from '~/components/ThePagination.vue'
-import RepoErrorScreen from '~/components/RepoErrorScreen.vue'
+import IssuesErrorScreen from '~/components/IssuesErrorScreen.vue'
 import { Issue, PullRequest } from '~/serverMiddleware/api'
 import { getLastPageFromLinkHeaders } from '~/utils/githubPagination'
 
@@ -49,13 +52,13 @@ const ITEM_PER_PAGE = 30
   components: {
     BaseIssueCard,
     BaseLoadingScreen,
-    RepoFilterMenu,
+    IssuesFilterMenu,
     ThePagination,
-    RepoErrorScreen
+    IssuesErrorScreen
   },
   transition: 'bounce'
 })
-export default class Repo extends Vue {
+export default class Issues extends Vue {
   data: Array<Issue | PullRequest> = []
   lastPage = 1
   status: 'loading' | 'success' | 'failed' = 'loading'
@@ -104,11 +107,11 @@ export default class Repo extends Vue {
   }
 
   get owner() {
-    return this.$route.params.owner
+    return this.$route.query.owner
   }
 
   get repo() {
-    return this.$route.params.repo
+    return this.$route.query.repo
   }
 
   get repoUrl() {

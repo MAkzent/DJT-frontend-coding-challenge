@@ -1,47 +1,47 @@
-import { getGithubRepoPathname } from './url'
+import { getGithubRepoAndOwner } from './url'
 
 test('support github repository url', () => {
-  const pathname = getGithubRepoPathname('https://github.com/facebook/react')
-  expect(pathname).toEqual('/facebook/react')
+  const pathname = getGithubRepoAndOwner('https://github.com/facebook/react')
+  expect(pathname).toEqual({ owner: 'facebook', repo: 'react' })
 })
 
 test('support url with trailing slashes', () => {
-  const pathname = getGithubRepoPathname('https://github.com/facebook/react///')
-  expect(pathname).toEqual('/facebook/react')
+  const pathname = getGithubRepoAndOwner('https://github.com/facebook/react///')
+  expect(pathname).toEqual({ owner: 'facebook', repo: 'react' })
 })
 
 test('support url with www subdomain', () => {
-  const pathname = getGithubRepoPathname(
+  const pathname = getGithubRepoAndOwner(
     'https://www.github.com/facebook/react'
   )
-  expect(pathname).toEqual('/facebook/react')
+  expect(pathname).toEqual({ owner: 'facebook', repo: 'react' })
 })
 
 test('support http url', () => {
-  const pathname = getGithubRepoPathname('http://github.com/facebook/react')
-  expect(pathname).toEqual('/facebook/react')
+  const pathname = getGithubRepoAndOwner('http://github.com/facebook/react')
+  expect(pathname).toEqual({ owner: 'facebook', repo: 'react' })
 })
 
 test('error when the domain is wrong', () => {
   expect(() => {
-    getGithubRepoPathname('https://gitlab.com/facebook/react')
+    getGithubRepoAndOwner('https://gitlab.com/facebook/react')
   }).toThrow('URL is not a GitHub domain.')
 
   expect(() => {
-    getGithubRepoPathname('https://githab.net/facebook/react')
+    getGithubRepoAndOwner('https://githab.net/facebook/react')
   }).toThrow('URL is not a GitHub domain.')
 })
 
 test('error when url is not repo homepage', () => {
   expect(() => {
-    getGithubRepoPathname('https://github.com/facebook')
+    getGithubRepoAndOwner('https://github.com/facebook')
   }).toThrow('URL is not a GitHub repository homepage.')
 
   expect(() => {
-    getGithubRepoPathname('https://github.com')
+    getGithubRepoAndOwner('https://github.com')
   }).toThrow('URL is not a GitHub repository homepage.')
 
   expect(() => {
-    getGithubRepoPathname('https://github.com/facebook/react/issues')
+    getGithubRepoAndOwner('https://github.com/facebook/react/issues')
   }).toThrow('URL is not a GitHub repository homepage.')
 })
