@@ -33,7 +33,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator'
+import { Vue, Component, Watch } from 'nuxt-property-decorator'
 import axios from 'axios'
 import BaseIssueCard from '~/components/BaseIssueCard.vue'
 import BaseLoadingScreen from '~/components/BaseLoadingScreen.vue'
@@ -58,10 +58,22 @@ export default class Repo extends Vue {
   data: Issue[] = []
   status: 'loading' | 'success' | 'failed' = 'loading'
 
-  async mounted() {
+  mounted() {
+    this.fetchData()
+  }
+
+  @Watch('activeMenu')
+  onActiveMenuChanged() {
+    this.status = 'loading'
+    this.fetchData()
+  }
+
+  async fetchData() {
     try {
       const { data } = await axios.get(
-        `/api/repos/${this.owner}/${this.repo}/issues`
+        `/api/repos/${this.owner}/${this.repo}/issues?state=${
+          this.activeMenu === Menu.Pr ? Menu.All : this.activeMenu
+        }`
       )
       this.data = data
       this.status = 'success'
@@ -88,14 +100,10 @@ export default class Repo extends Vue {
 
   get filteredData() {
     switch (this.activeMenu) {
-      case 'open':
-        return this.data.filter((d) => !d.pull_request && d.state === Menu.Open)
-      case 'closed':
-        return this.data.filter(
-          (d) => !d.pull_request && d.state === Menu.Closed
-        )
       case 'pr':
         return this.data.filter((d) => d.pull_request)
+      case 'open':
+      case 'closed':
       case 'all':
       default:
         return this.data

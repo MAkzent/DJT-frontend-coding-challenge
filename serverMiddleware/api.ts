@@ -8,13 +8,17 @@ const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN
 })
 
-function getAllIssues(owner: string, repo: string): Promise<Issue[]> {
+function getAllIssues(
+  owner: string,
+  repo: string,
+  state: State = 'all'
+): Promise<Issue[]> {
   return octokit.paginate(
     'GET /repos/:owner/:repo/issues',
     {
       owner,
       repo,
-      state: 'all',
+      state,
       per_page: 100
     },
     ({ data }) => data
@@ -23,10 +27,10 @@ function getAllIssues(owner: string, repo: string): Promise<Issue[]> {
 
 const fastify = Fastify({ logger: true })
 
-fastify.get<{}, { owner: string; repo: string }>(
+fastify.get<{ state?: State }, { owner: string; repo: string }>(
   '/repos/:owner/:repo/issues',
-  async ({ params: { owner, repo } }) => {
-    const issues = await getAllIssues(owner, repo)
+  async ({ params: { owner, repo }, query: { state } }) => {
+    const issues = await getAllIssues(owner, repo, state)
     return issues
   }
 )
@@ -54,3 +58,5 @@ export interface Issue {
     url: string
   }
 }
+
+export type State = 'all' | 'open' | 'closed'
