@@ -21,7 +21,7 @@
 
 ---
 
-### Looking Back
+### Looking Back (1)
 
 > Describe the major design/build decisions and why you made them.
 
@@ -67,4 +67,47 @@
   - More unit testing
   - CI/CD
   - Caching
+  - i18n? (based on browser language)
+
+### Looking Back (continue)
+
+There're some misunderstanding so I talked with Michael and we came into a conclusion that I'm going to update the code accordingly.
+
+> Describe the major design/build decisions and why you made them.
+
+- Store data for each page in the store
+  - This will improve the UX which a user won't have to load the data again for the same page while navigating.
+  - This comes with the tradeoff, the data won't always be new, so we'll need a way to check if the data is staled or not and tell a user to refresh the page.
+- Show PRs on "All Issues", "Open Issues", and "Closed Issues" page.
+  - To solve the issue of loading for too long on a huge repo, we decided to use the data as the GitHub API provide so that we can do the pagination correctly.
+  - To improve the loading time, the data will be fetched per-page.
+
+> How long did the assignment take (in hours)? Please break down your answer into buckets (e.g. "Learning Framework", "Coding", "Debugging").
+
+- +4 hours.
+  - Learning GitHub API / Vuex + Planning ~ 2 hours
+  - Coding + Debugging ~ 2 hours
+
+> ## If you could go back and give yourself advice at the beginning of the project, what would it be?
+
+- Talk with Michael more so we can avoid this requirement misunderstanding.
+
+> ## Did you learn anything new?
+
+- A lot about Vuex.
+- `@octokit/rest.js` generate type definition in an interesting way.
+
+> ## Do you feel that this assignment allowed you to showcase your abilities effectively?
+
+- Yes!
+
+> ## Are there any significant web development-related skills that you possess that were not demonstrated in this exercise? If so, what are they?
+
+- The thing this exercise doesn't cover:
+  - How we would architecting for a large project
+  - How we handle data mutation, optimistic update
+- The thing that could apply to this exercise and I wish I could have more time to do:
+  - CI/CD
+  - Persist data in browser DB (local storage / IndexedDB / SW)
+  - Invalidate session cache (show nagger that the data has been updated, please refresh the page)
   - i18n? (based on browser language)
