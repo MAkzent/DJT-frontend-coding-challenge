@@ -1,4 +1,4 @@
-export function removeTrailingSlashes(url: string) {
+function removeTrailingSlashes(url: string) {
   return url.replace(/\/+$/, '')
 }
 
@@ -12,4 +12,8 @@ export function getGithubRepoAndOwner(url: string) {
   }
   const [, owner, repo] = pathname.split('/')
   return { owner, repo }
+}
+
+export function getGitHubRepoUrl(owner: string, repo: string) {
+  return `https://github.com/${owner}/${repo}`
 }

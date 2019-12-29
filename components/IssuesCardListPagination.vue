@@ -22,7 +22,7 @@ import { Vue, Component, Prop } from 'nuxt-property-decorator'
 import { generatePageNumbers } from '~/utils/pageNumbers'
 
 @Component
-export default class ThePagination extends Vue {
+export default class IssuesCardListPagination extends Vue {
   @Prop({ type: Number, required: true }) readonly totalPageNumber!: number
 
   get query() {
