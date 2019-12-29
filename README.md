@@ -29,4 +29,29 @@ $ yarn start
 $ yarn generate
 ```
 
+### Testing
+
+#### Static Analysis
+
+```bash
+$ yarn static-check
+```
+
+#### Unit test
+
+```bash
+$ yarn test
+```
+
+#### E2E test
+
+```bash
+$ yarn build && yarn start
+# on another terminal session
+$ yarn e2e
+
+# You can also debug the E2E with
+$ yarn e2e:dev
+```
+
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
