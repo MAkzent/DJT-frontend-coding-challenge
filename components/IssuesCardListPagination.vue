@@ -10,6 +10,7 @@
           :class="{ active: isCurrentPage(pageNumber) }"
           :aria-current="isCurrentPage(pageNumber)"
           :aria-label="`Go to page ${pageNumber}`"
+          :data-testid="isCurrentPage(pageNumber) ? 'active-page' : null"
           >{{ pageNumber }}</nuxt-link
         >
       </li>

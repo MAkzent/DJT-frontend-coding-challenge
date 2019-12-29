@@ -14,15 +14,15 @@
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
-    "baseUrl": ".",
+    "baseUrl": "../node_modules",
     "paths": {
       "~/*": ["./*"],
       "@/*": ["./*"]
     },
-    "types": ["@types/node", "@nuxt/types", "@types/jest"],
     "downlevelIteration": true,
     "experimentalDecorators": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": ["cypress", "@types/testing-library__cypress"]
   },
-  "exclude": ["node_modules", "cypress"]
+  "includes": ["**/*.ts"]
 }

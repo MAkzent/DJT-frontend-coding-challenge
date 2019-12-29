@@ -13,6 +13,7 @@ module.exports = {
     '@nuxtjs',
     '@nuxtjs/eslint-config-typescript',
     'plugin:jest/recommended',
+    'plugin:cypress/recommended',
     'prettier',
     'prettier/@typescript-eslint',
     'prettier/vue',
@@ -37,6 +38,17 @@ module.exports = {
       files: ['*.js'],
       rules: {
         '@typescript-eslint/no-var-requires': 'off'
+      }
+    },
+    {
+      files: ['cypress/**/*.{ts,js}'],
+      env: {
+        'cypress/globals': true
+      },
+      rules: {
+        'jest/expect-expect': 'off',
+        'jest/valid-expect': 'off',
+        'jest/valid-expect-in-promise': 'off'
       }
     }
   ]

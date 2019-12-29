@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" data-testid="issue-card">
     <div class="title">
       <div class="line-clamp">{{ title }}</div>
       <img

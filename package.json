@@ -10,7 +10,12 @@
     "start": "nuxt-ts start",
     "generate": "nuxt-ts generate",
     "lint": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
-    "test": "jest"
+    "test": "jest",
+    "type-check": "tsc",
+    "type-check:cypress": "yarn type-check -p cypress",
+    "static-check": "yarn type-check && yarn type-check:cypress && yarn lint",
+    "e2e": "cypress run",
+    "e2e:dev": "cypress open"
   },
   "lint-staged": {
     "*.{ts,js,vue}": "eslint"
@@ -32,19 +37,23 @@
     "query-string": "^6.9.0"
   },
   "devDependencies": {
+    "@cypress/webpack-preprocessor": "^4.1.1",
     "@nuxt/typescript-build": "^0.5.1",
     "@nuxtjs/eslint-config": "^1.0.1",
     "@nuxtjs/eslint-config-typescript": "^1.0.0",
     "@nuxtjs/eslint-module": "^1.0.0",
     "@nuxtjs/stylelint-module": "^3.1.0",
+    "@testing-library/cypress": "^5.0.2",
     "@types/jest": "^24.0.23",
     "@typescript-eslint/eslint-plugin": "^2.12.0",
     "@typescript-eslint/parser": "^2.12.0",
     "@vue/test-utils": "^1.0.0-beta.27",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
+    "cypress": "^3.8.1",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-cypress": "^2.8.1",
     "eslint-plugin-jest": "^23.1.1",
     "eslint-plugin-nuxt": ">=0.4.2",
     "eslint-plugin-prettier": "^3.0.1",
@@ -62,6 +71,7 @@
     "stylelint-config-standard": "^19.0.0",
     "stylelint-scss": "^3.13.0",
     "ts-jest": "^24.2.0",
+    "ts-loader": "^6.2.1",
     "vue-jest": "^4.0.0-0"
   }
 }

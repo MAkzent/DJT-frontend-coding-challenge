@@ -6,6 +6,7 @@
           :to="{ query: { ...query, menu, page: 1 } }"
           :class="{ active: menu === activeMenu }"
           class="menu-item"
+          :data-testid="menu === activeMenu ? 'active-menu' : null"
           >{{ getMenuText(menu) }}</nuxt-link
         >
       </li>
