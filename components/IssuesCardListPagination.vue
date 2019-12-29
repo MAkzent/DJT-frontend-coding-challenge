@@ -19,13 +19,11 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'nuxt-property-decorator'
+import { Vue, Component } from 'nuxt-property-decorator'
 import { generatePageNumbers } from '~/utils/pageNumbers'
 
 @Component
 export default class IssuesCardListPagination extends Vue {
-  @Prop({ type: Number, required: true }) readonly totalPageNumber!: number
-
   get query() {
     return this.$route.query
   }
@@ -35,7 +33,7 @@ export default class IssuesCardListPagination extends Vue {
   }
 
   get pageNumbers() {
-    return generatePageNumbers(this.currentPage, this.totalPageNumber)
+    return generatePageNumbers(this.currentPage, this.$store.getters.lastPage)
   }
 
   isCurrentPage(pageNumber: number) {

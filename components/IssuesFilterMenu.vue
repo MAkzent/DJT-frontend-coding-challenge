@@ -16,13 +16,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'nuxt-property-decorator'
-
-export enum Menu {
-  All = 'all',
-  Open = 'open',
-  Closed = 'closed',
-  Pr = 'pr',
-}
+import { Menu } from '~/store'
 
 export const MenuText = {
   [Menu.All]: 'All Issues',

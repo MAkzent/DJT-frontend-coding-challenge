@@ -1,13 +1,13 @@
 <template>
   <div class="issues-card-list">
-    <BaseLoadingScreen v-if="status === 'loading'" key="loading-screen" />
-    <IssuesCardListErrorScreen
-      v-else-if="status === 'failed'"
-      key="error-screen"
+    <IssuesCardListErrorScreen v-if="status === 'failed'" key="error-screen" />
+    <BaseLoadingScreen
+      v-else-if="!issues || status === 'loading'"
+      key="loading-screen"
     />
-    <div v-else-if="data.length" key="grid-screen">
+    <div v-else-if="issues.length" key="grid-screen">
       <transition-group name="card" class="card-grid" appear>
-        <div v-for="issueOrPr in data" :key="issueOrPr.id" class="card-item">
+        <div v-for="issueOrPr in issues" :key="issueOrPr.id" class="card-item">
           <BaseIssueCard
             :title="issueOrPr.title"
             :body="issueOrPr.body || ''"
@@ -17,7 +17,7 @@
           />
         </div>
       </transition-group>
-      <IssuesCardListPagination :total-page-number="lastPage" />
+      <IssuesCardListPagination />
     </div>
     <IssuesCardListEmptyScreen
       v-else
@@ -33,16 +33,10 @@
 import { Vue, Component, Watch, Prop } from 'nuxt-property-decorator'
 import BaseIssueCard from '~/components/BaseIssueCard.vue'
 import BaseLoadingScreen from '~/components/BaseLoadingScreen.vue'
-import { Menu } from '~/components/IssuesFilterMenu.vue'
 import IssuesCardListPagination from '~/components/IssuesCardListPagination.vue'
 import IssuesCardListErrorScreen from '~/components/IssuesCardListErrorScreen.vue'
 import IssuesCardListEmptyScreen from '~/components/IssuesCardListEmptyScreen.vue'
-import { Issue, PullRequest } from '~/serverMiddleware/api'
-import {
-  listIssuesForRepo,
-  listPullRequestsForRepo,
-} from '~/serverMiddleware/client'
-import { getLastPageFromLinkHeaders } from '~/utils/githubPagination'
+import { IssueOrPullRequest, Menu } from '~/store'
 
 const ITEM_PER_PAGE = 30
 
@@ -61,12 +55,10 @@ export default class IssuesCardList extends Vue {
   @Prop({ type: String, required: true }) readonly activeMenu!: Menu
   @Prop({ type: Number, required: true }) readonly currentPage!: number
 
-  data: Array<Issue | PullRequest> = []
-  lastPage = 1
-  status: 'loading' | 'success' | 'failed' = 'loading'
+  status: 'loading' | 'idle' | 'failed' = 'idle'
 
   mounted() {
-    this.fetchData()
+    this.fetchIssues()
   }
 
   @Watch('owner')
@@ -74,38 +66,33 @@ export default class IssuesCardList extends Vue {
   @Watch('activeMenu')
   @Watch('currentPage')
   onPropsChanged() {
-    this.fetchData()
+    this.fetchIssues()
   }
 
-  async fetchData() {
+  async fetchIssues() {
+    if (this.issues) {
+      return
+    }
     this.status = 'loading'
     try {
-      const {
-        data,
-        headers: { link },
-      } = await this.fetchIssuesOrPullRequests()
-      this.lastPage = getLastPageFromLinkHeaders(link)
-      this.data = data
-      this.status = 'success'
+      await this.$store.dispatch('fetchIssues', {
+        owner: this.owner,
+        repo: this.repo,
+        menu: this.activeMenu,
+        perPage: ITEM_PER_PAGE,
+        page: this.currentPage,
+      })
+      this.status = 'idle'
     } catch (error) {
       this.status = 'failed'
     }
   }
 
-  fetchIssuesOrPullRequests() {
-    if (this.activeMenu === Menu.Pr) {
-      return listPullRequestsForRepo(this.owner, this.repo, {
-        state: 'all',
-        per_page: ITEM_PER_PAGE,
-        page: this.currentPage,
-      })
-    } else {
-      return listIssuesForRepo(this.owner, this.repo, {
-        state: this.activeMenu,
-        per_page: ITEM_PER_PAGE,
-        page: this.currentPage,
-      })
-    }
+  get issues(): IssueOrPullRequest[] | undefined {
+    return this.$store.getters.getIssuesByMenuAndPage(
+      this.activeMenu,
+      this.currentPage
+    )
   }
 }
 </script>

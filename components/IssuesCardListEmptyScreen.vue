@@ -6,7 +6,8 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'nuxt-property-decorator'
-import { Menu, MenuText } from '~/components/IssuesFilterMenu.vue'
+import { Menu } from '~/store'
+import { MenuText } from '~/components/IssuesFilterMenu.vue'
 import { getGitHubRepoUrl } from '~/utils/url'
 
 @Component

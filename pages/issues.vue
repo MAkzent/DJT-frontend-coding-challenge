@@ -18,9 +18,10 @@
 
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator'
-import IssuesFilterMenu, { Menu } from '~/components/IssuesFilterMenu.vue'
+import IssuesFilterMenu from '~/components/IssuesFilterMenu.vue'
 import IssuesCardList from '~/components/IssuesCardList.vue'
 import { getGitHubRepoUrl } from '~/utils/url'
+import { Menu } from '~/store'
 
 function isValidMenu(menu: unknown): menu is Menu {
   return Object.values(Menu).includes(menu as Menu)
