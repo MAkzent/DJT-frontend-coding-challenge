@@ -25,6 +25,22 @@ function getAllIssues(
   )
 }
 
+function getAllPullRequests(
+  owner: string,
+  repo: string
+): Promise<PullRequest[]> {
+  return octokit.paginate(
+    'GET /repos/:owner/:repo/pulls',
+    {
+      owner,
+      repo,
+      state: 'all',
+      per_page: 100
+    },
+    ({ data }) => data
+  )
+}
+
 const fastify = Fastify({ logger: true })
 
 fastify.get<{ state?: State }, { owner: string; repo: string }>(
@@ -32,6 +48,14 @@ fastify.get<{ state?: State }, { owner: string; repo: string }>(
   async ({ params: { owner, repo }, query: { state } }) => {
     const issues = await getAllIssues(owner, repo, state)
     return issues
+  }
+)
+
+fastify.get<{ owner: string; repo: string }>(
+  '/repos/:owner/:repo/pulls',
+  async ({ params: { owner, repo } }) => {
+    const pullRequests = await getAllPullRequests(owner, repo)
+    return pullRequests
   }
 )
 
@@ -57,6 +81,14 @@ export interface Issue {
   pull_request: {
     url: string
   }
+}
+
+export interface PullRequest {
+  id: number
+  title: string
+  body: string
+  labels: Label[]
+  base: { label: string }
 }
 
 export type State = 'all' | 'open' | 'closed'
