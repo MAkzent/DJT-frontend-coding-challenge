@@ -17,7 +17,8 @@
     "format:check": "prettier --check '**'",
     "static-check": "yarn format:check && yarn lint && yarn type-check && yarn type-check:cypress",
     "e2e": "cypress run",
-    "e2e:dev": "cypress open"
+    "e2e:dev": "cypress open",
+    "ci": "yarn static-check && yarn test && yarn e2e"
   },
   "lint-staged": {
     "*.{ts,js,vue}": "eslint"
