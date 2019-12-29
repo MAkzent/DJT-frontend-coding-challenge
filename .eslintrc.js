@@ -22,6 +22,7 @@ module.exports = {
   plugins: ['prettier'],
   // add your custom rules here
   rules: {
+    camelcase: 'off',
     '@typescript-eslint/camelcase': ['error', { properties: 'never' }],
     '@typescript-eslint/explicit-function-return-type': 'off'
   },

@@ -28,7 +28,8 @@
     "@octokit/rest": "^16.35.2",
     "fastify": "^2.11.0",
     "nuxt": "^2.0.0",
-    "nuxt-property-decorator": "^2.5.0"
+    "nuxt-property-decorator": "^2.5.0",
+    "query-string": "^6.9.0"
   },
   "devDependencies": {
     "@nuxt/typescript-build": "^0.5.1",

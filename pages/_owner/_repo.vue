@@ -8,13 +8,9 @@
     <main class="content">
       <BaseLoadingScreen v-if="status === 'loading'" key="loading-screen" />
       <RepoErrorScreen v-else-if="status === 'failed'" key="error-screen" />
-      <div v-else-if="dataForPage.length" key="grid-screen">
+      <div v-else-if="data.length" key="grid-screen">
         <transition-group name="card" class="card-grid" appear>
-          <div
-            v-for="issueOrPr in dataForPage"
-            :key="issueOrPr.id"
-            class="card-item"
-          >
+          <div v-for="issueOrPr in data" :key="issueOrPr.id" class="card-item">
             <BaseIssueCard
               :title="issueOrPr.title"
               :body="issueOrPr.body"
@@ -24,7 +20,7 @@
             />
           </div>
         </transition-group>
-        <ThePagination :total-page-number="totalPageNumber" />
+        <ThePagination :total-page-number="lastPage" />
       </div>
       <div v-else key="empty-screen" class="empty-result">
         <p>
@@ -45,8 +41,9 @@ import RepoFilterMenu, { Menu, MenuText } from '~/components/RepoFilterMenu.vue'
 import ThePagination from '~/components/ThePagination.vue'
 import RepoErrorScreen from '~/components/RepoErrorScreen.vue'
 import { Issue, PullRequest } from '~/serverMiddleware/api'
+import { getLastPageFromLinkHeaders } from '~/utils/githubPagination'
 
-const ITEM_PER_PAGE = 20
+const ITEM_PER_PAGE = 30
 
 @Component({
   components: {
@@ -60,6 +57,7 @@ const ITEM_PER_PAGE = 20
 })
 export default class Repo extends Vue {
   data: Array<Issue | PullRequest> = []
+  lastPage = 1
   status: 'loading' | 'success' | 'failed' = 'loading'
 
   mounted() {
@@ -68,23 +66,37 @@ export default class Repo extends Vue {
 
   @Watch('activeMenu')
   onActiveMenuChanged() {
-    this.status = 'loading'
     this.fetchData()
   }
 
+  @Watch('currentPage')
+  onCurrentPageChanged() {
+    this.fetchData()
+  }
+
+  get activeMenu() {
+    return this.$route.query.menu || Menu.All
+  }
+
+  get currentPage() {
+    return +this.$route.query.page || 1
+  }
+
   async fetchData() {
+    this.status = 'loading'
     try {
+      let url
       if (this.activeMenu === Menu.Pr) {
-        const { data } = await axios.get(
-          `/api/repos/${this.owner}/${this.repo}/pulls`
-        )
-        this.data = data
+        url = `/api/repos/${this.owner}/${this.repo}/pulls?state=all&page=${this.currentPage}&per_page=${ITEM_PER_PAGE}`
       } else {
-        const { data } = await axios.get(
-          `/api/repos/${this.owner}/${this.repo}/issues?state=${this.activeMenu}`
-        )
-        this.data = data
+        url = `/api/repos/${this.owner}/${this.repo}/issues?state=${this.activeMenu}&page=${this.currentPage}&per_page=${ITEM_PER_PAGE}`
       }
+      const {
+        data,
+        headers: { link }
+      } = await axios.get(url)
+      this.lastPage = getLastPageFromLinkHeaders(link)
+      this.data = data
       this.status = 'success'
     } catch (error) {
       this.status = 'failed'
@@ -103,22 +115,8 @@ export default class Repo extends Vue {
     return `https://github.com/${this.owner}/${this.repo}`
   }
 
-  get activeMenu() {
-    return this.$route.query.menu || Menu.All
-  }
-
   getMenuText(menu: Menu) {
     return MenuText[menu]
-  }
-
-  get totalPageNumber() {
-    return Math.ceil(this.data.length / ITEM_PER_PAGE)
-  }
-
-  get dataForPage() {
-    const currentPage = +this.$route.query.page || 1
-    const start = (currentPage - 1) * ITEM_PER_PAGE
-    return this.data.slice(start, start + ITEM_PER_PAGE)
   }
 }
 </script>

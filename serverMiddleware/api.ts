@@ -8,54 +8,53 @@ const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN
 })
 
-function getAllIssues(
-  owner: string,
-  repo: string,
-  state: State = 'all'
-): Promise<Issue[]> {
-  return octokit.paginate(
-    'GET /repos/:owner/:repo/issues',
-    {
+const fastify = Fastify({ logger: true })
+
+fastify.get<
+  { state?: State; page?: number; per_page?: number },
+  { owner: string; repo: string }
+>(
+  '/repos/:owner/:repo/issues',
+  async (
+    { params: { owner, repo }, query: { state, page, per_page: perPage } },
+    reply
+  ) => {
+    const {
+      data,
+      headers: { link }
+    } = await octokit.issues.listForRepo({
       owner,
       repo,
       state,
-      per_page: 100
-    },
-    ({ data }) => data
-  )
-}
-
-function getAllPullRequests(
-  owner: string,
-  repo: string
-): Promise<PullRequest[]> {
-  return octokit.paginate(
-    'GET /repos/:owner/:repo/pulls',
-    {
-      owner,
-      repo,
-      state: 'all',
-      per_page: 100
-    },
-    ({ data }) => data
-  )
-}
-
-const fastify = Fastify({ logger: true })
-
-fastify.get<{ state?: State }, { owner: string; repo: string }>(
-  '/repos/:owner/:repo/issues',
-  async ({ params: { owner, repo }, query: { state } }) => {
-    const issues = await getAllIssues(owner, repo, state)
-    return issues
+      page,
+      per_page: perPage
+    })
+    reply.header('link', link)
+    return data
   }
 )
 
-fastify.get<{ owner: string; repo: string }>(
+fastify.get<
+  { state?: State; page?: number; per_page?: number },
+  { owner: string; repo: string }
+>(
   '/repos/:owner/:repo/pulls',
-  async ({ params: { owner, repo } }) => {
-    const pullRequests = await getAllPullRequests(owner, repo)
-    return pullRequests
+  async (
+    { params: { owner, repo }, query: { state, page, per_page: perPage } },
+    reply
+  ) => {
+    const {
+      data,
+      headers: { link }
+    } = await octokit.pulls.list({
+      owner,
+      repo,
+      state,
+      page,
+      per_page: perPage
+    })
+    reply.header('link', link)
+    return data
   }
 )
 
