@@ -1,6 +1,6 @@
 import Octokit from '@octokit/rest'
 import Dotenv from 'dotenv'
-import { ServerMiddleware } from '@nuxt/types'
+import Fastify from 'fastify'
 
 Dotenv.config()
 
@@ -21,24 +21,21 @@ function getAllIssues(owner: string, repo: string): Promise<Issue[]> {
   )
 }
 
-const apiServerMiddleware: ServerMiddleware = async function(req, res, next) {
-  if (!req.url) {
-    res.end()
-    return
-  }
-  const [, , owner, repo] = req.url.split('/')
-  try {
+const fastify = Fastify({ logger: true })
+
+fastify.get<{}, { owner: string; repo: string }>(
+  '/repos/:owner/:repo/issues',
+  async ({ params: { owner, repo } }) => {
     const issues = await getAllIssues(owner, repo)
-    res.write(JSON.stringify(issues))
-    res.end()
-  } catch (error) {
-    next(new Error('Unable to get issues.'))
+    return issues
   }
-}
+)
+
+fastify.ready()
 
 export default {
   path: '/api',
-  handler: apiServerMiddleware
+  handler: fastify.server
 }
 
 export interface Label {
