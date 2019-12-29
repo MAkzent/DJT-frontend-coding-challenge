@@ -13,7 +13,7 @@
           <div v-for="issueOrPr in data" :key="issueOrPr.id" class="card-item">
             <BaseIssueCard
               :title="issueOrPr.title"
-              :body="issueOrPr.body"
+              :body="issueOrPr.body || ''"
               :labels="issueOrPr.labels"
               :is-pull-request="!!issueOrPr.base || !!issueOrPr.pull_request"
               :is-closed="issueOrPr.state === 'closed'"

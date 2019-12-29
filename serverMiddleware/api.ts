@@ -73,7 +73,7 @@ export interface Label {
 export interface Issue {
   id: number
   title: string
-  body: string
+  body: string | null
   state: 'open' | 'closed'
   labels: Label[]
   // eslint-disable-next-line camelcase
@@ -85,7 +85,7 @@ export interface Issue {
 export interface PullRequest {
   id: number
   title: string
-  body: string
+  body: string | null
   labels: Label[]
   base: { label: string }
 }
