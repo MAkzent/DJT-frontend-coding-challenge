@@ -34,7 +34,6 @@
 
 <script lang="ts">
 import { Vue, Component, Watch } from 'nuxt-property-decorator'
-import axios from 'axios'
 import BaseIssueCard from '~/components/BaseIssueCard.vue'
 import BaseLoadingScreen from '~/components/BaseLoadingScreen.vue'
 import IssuesFilterMenu, {
@@ -44,9 +43,17 @@ import IssuesFilterMenu, {
 import ThePagination from '~/components/ThePagination.vue'
 import IssuesErrorScreen from '~/components/IssuesErrorScreen.vue'
 import { Issue, PullRequest } from '~/serverMiddleware/api'
+import {
+  listIssuesForRepo,
+  listPullRequestsForRepo
+} from '~/serverMiddleware/client'
 import { getLastPageFromLinkHeaders } from '~/utils/githubPagination'
 
 const ITEM_PER_PAGE = 30
+
+function isValidMenu(menu: unknown): menu is Menu {
+  return Object.values(Menu).includes(menu as Menu)
+}
 
 @Component({
   components: {
@@ -77,8 +84,14 @@ export default class Issues extends Vue {
     this.fetchData()
   }
 
-  get activeMenu() {
-    return this.$route.query.menu || Menu.All
+  get activeMenu(): Menu {
+    const activeMenu = this.$route.query.menu || Menu.All
+    if (!isValidMenu(activeMenu)) {
+      throw new TypeError(
+        `Menu from the URL should be either ${Menu.All}, ${Menu.Open}, ${Menu.Closed}, or ${Menu.Pr}.`
+      )
+    }
+    return activeMenu
   }
 
   get currentPage() {
@@ -88,30 +101,49 @@ export default class Issues extends Vue {
   async fetchData() {
     this.status = 'loading'
     try {
-      let url
-      if (this.activeMenu === Menu.Pr) {
-        url = `/api/repos/${this.owner}/${this.repo}/pulls?state=all&page=${this.currentPage}&per_page=${ITEM_PER_PAGE}`
-      } else {
-        url = `/api/repos/${this.owner}/${this.repo}/issues?state=${this.activeMenu}&page=${this.currentPage}&per_page=${ITEM_PER_PAGE}`
-      }
       const {
         data,
         headers: { link }
-      } = await axios.get(url)
+      } = await this.fetchIssuesOrPullRequests()
       this.lastPage = getLastPageFromLinkHeaders(link)
       this.data = data
+
       this.status = 'success'
     } catch (error) {
       this.status = 'failed'
     }
   }
 
-  get owner() {
-    return this.$route.query.owner
+  fetchIssuesOrPullRequests() {
+    if (this.activeMenu === Menu.Pr) {
+      return listPullRequestsForRepo(this.owner, this.repo, {
+        state: 'all',
+        per_page: ITEM_PER_PAGE,
+        page: this.currentPage
+      })
+    } else {
+      return listIssuesForRepo(this.owner, this.repo, {
+        state: this.activeMenu,
+        per_page: ITEM_PER_PAGE,
+        page: this.currentPage
+      })
+    }
   }
 
-  get repo() {
-    return this.$route.query.repo
+  get owner(): string {
+    const owner = this.$route.query.owner
+    if (typeof owner !== 'string') {
+      throw new TypeError('Owner from the URL should be string.')
+    }
+    return owner
+  }
+
+  get repo(): string {
+    const repo = this.$route.query.repo
+    if (typeof repo !== 'string') {
+      throw new TypeError('Repo from the URL should be string.')
+    }
+    return repo
   }
 
   get repoUrl() {
