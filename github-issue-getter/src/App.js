@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
+import IssueSearchPage from "./components/issueSearchPage/IssueSearchPage";
 import "./App.scss";
 class App extends Component {
   constructor(props) {
@@ -6,7 +7,11 @@ class App extends Component {
     this.state = {};
   }
   render() {
-    return <div>hi</div>;
+    return (
+      <Fragment>
+        <IssueSearchPage />
+      </Fragment>
+    );
   }
 }
 
