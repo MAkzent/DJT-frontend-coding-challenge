@@ -6,7 +6,6 @@ class IssueFilter extends Component {
     this.state = {};
   }
   changeColor = e => {
-    e.target.style = "color: #e91e63";
     this.props.showSelectedIssueType(this.props.issueType);
   };
   render() {

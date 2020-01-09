@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 import ResultsContainer from "../resultsPage/ResultsContainer";
+
+import "./issueSearchPage.scss";
 class IssueSearchPage extends Component {
   constructor(props) {
     super(props);
@@ -86,18 +88,22 @@ class IssueSearchPage extends Component {
 
     if (this.state.isLoading === "") {
       currentView = (
-        <div>
+        <div className="searchBarContainer">
+          <div id="searchBarLabel">Github Issue Viewer</div>
           <input
             onKeyPress={this.callGitHubIssuesGetter}
             onChange={this.updateGitHubLink}
             type="text"
             placeholder="Paste a link to a GitHub repo!"
             value={this.state.value}
+            className="searchBar"
           ></input>
         </div>
       );
     } else if (this.state.isLoading === true) {
-      currentView = <div>loading</div>;
+      currentView = (
+        <img src="https://wpamelia.com/wp-content/uploads/2018/11/ezgif-2-6d0b072c3d3f.gif"></img>
+      );
     } else {
       currentView = <ResultsContainer issues={this.state.gitHubIssues} />;
     }
