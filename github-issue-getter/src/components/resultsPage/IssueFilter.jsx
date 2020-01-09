@@ -5,12 +5,12 @@ class IssueFilter extends Component {
     super(props);
     this.state = {};
   }
-  changeColor = e => {
+  changeFilter = () => {
     this.props.showSelectedIssueType(this.props.issueType);
   };
   render() {
     return (
-      <div onClick={this.changeColor} className="issueType">
+      <div onClick={this.changeFilter} className="issueType">
         {this.props.issueType}
       </div>
     );
