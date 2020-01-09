@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-
+import "./styles/issue.scss";
 class Issue extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
   render() {
-    return <div>issue</div>;
+    console.log(this.props.issueInfo);
+    return <div className="issue">{this.props.issueInfo.issueTitle}</div>;
   }
 }
 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Issue from "./Issue";
 import ResultsNavBar from "./ResultsNavbar";
-import "./styles/ResultsContainer.scss";
+import "./styles/resultsContainer.scss";
 class ResultsContainer extends Component {
   constructor(props) {
     super(props);
@@ -14,7 +14,10 @@ class ResultsContainer extends Component {
           <ResultsNavBar />
         </nav>
         <div className="issueContainer">
-          <Issue />
+          {this.props.issues.map(issueInfo => {
+            console.log("info", issueInfo);
+            return <Issue issueInfo={issueInfo} />;
+          })}
         </div>
       </div>
     );

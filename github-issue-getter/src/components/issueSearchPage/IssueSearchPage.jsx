@@ -5,7 +5,7 @@ class IssueSearchPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: false,
+      isLoading: "",
       currentGitHubLink: "",
       gitHubIssues: []
     };
