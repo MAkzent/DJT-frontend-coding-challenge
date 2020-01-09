@@ -1,5 +1,11 @@
 .navBarTitle {
   color: white;
-  font-size: 2em;
+  font-size: 4vw;
   font-weight: bold;
+}
+
+@media screen and (min-width: 1200px) {
+  .navBarTitle {
+    font-size: 3vw;
+  }
 }
