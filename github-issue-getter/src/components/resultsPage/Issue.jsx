@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./styles/issue.scss";
 import IssueLabel from "./IssueLabel";
+
 class Issue extends Component {
   constructor(props) {
     super(props);
@@ -9,11 +10,13 @@ class Issue extends Component {
   render() {
     return (
       <div className="issueContainer">
-        <div className="issueTitle">{this.props.issueInfo.issueTitle}</div>
+        <div className="issueTitle">
+          <div>{this.props.issueInfo.issueTitle}</div>
+        </div>
         <div className="issueBody">{this.props.issueInfo.issueBody}</div>
         <div className="issueLabelsContainer">
-          {this.props.issueInfo.issueLabels.map(label => {
-            return <IssueLabel label={label} />;
+          {this.props.issueInfo.issueLabels.map((label, index) => {
+            return <IssueLabel label={label} key={index} />;
           })}
         </div>
       </div>

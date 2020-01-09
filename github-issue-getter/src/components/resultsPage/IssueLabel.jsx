@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./styles/issueLabel.scss";
 const IssueLabel = props => {
   return <div className="label">•{props.label.name}</div>;

@@ -26,8 +26,6 @@ class IssueSearchPage extends Component {
   };
 
   GitHubIssuesGetter = link => {
-    //https://github.com/forbesd7/guitarPractice
-
     //split link and get the user/reponame
     const splitLink = link.split("/");
     const gitHubUser = splitLink[3];
@@ -62,6 +60,7 @@ class IssueSearchPage extends Component {
           const curGitHubLinks = this.state.gitHubIssues;
           curGitHubLinks.push(issueInformation);
           this.setState({ gitHubIssues: curGitHubLinks });
+          return "Found Issues";
         });
         console.log(this.state.gitHubIssues);
         this.changeViewToResults();
@@ -104,6 +103,7 @@ class IssueSearchPage extends Component {
       currentView = (
         <div id="loadingImageContainer">
           <img
+            alt="Loading..."
             id="loadingImage"
             placeholder="loading..."
             src="https://wpamelia.com/wp-content/uploads/2018/11/ezgif-2-6d0b072c3d3f.gif"
