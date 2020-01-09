@@ -63,7 +63,7 @@ class ResultsContainer extends Component {
             );
           })}
         </div>
-        <div className="issueContainer">{this.state.currentIssues}</div>
+        <div className="issuesContainer">{this.state.currentIssues}</div>
       </div>
     );
   }

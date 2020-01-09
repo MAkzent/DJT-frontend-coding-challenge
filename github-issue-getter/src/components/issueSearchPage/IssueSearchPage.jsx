@@ -37,7 +37,7 @@ class IssueSearchPage extends Component {
       .get(`https://api.github.com/repos/${gitHubUser}/${repoName}/issues`, {
         params: {
           state: "all",
-          per_page: 100
+          per_page: 20
         }
       })
       .then(res => {
