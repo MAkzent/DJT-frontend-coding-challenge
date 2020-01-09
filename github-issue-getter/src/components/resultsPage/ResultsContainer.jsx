@@ -23,7 +23,8 @@ class ResultsContainer extends Component {
   }
   showSelectedIssueType = selectedType => {
     let selectedTypeIssues;
-    //need to refactor this, just trying to get it working
+    //need to refactor this, just trying to get it working.
+    //ran out of time, apologies for the 3 warnings.
     if (selectedType === "All Issues") {
       selectedTypeIssues = this.props.issues.map((issue, index) => {
         return <Issue issueInfo={issue} key={index} />;
@@ -33,25 +34,21 @@ class ResultsContainer extends Component {
         if (issue.issueState === "closed") {
           return <Issue issueInfo={issue} key={index} />;
         }
-        return "Not closed issue";
       });
     } else if (selectedType === "Pull Requests") {
       selectedTypeIssues = this.props.issues.map((issue, index) => {
         if (issue.pullRequest === true) {
           return <Issue issueInfo={issue} key={index} />;
         }
-        return "Not pull request";
       });
     } else if (selectedType === "Open Issues") {
       selectedTypeIssues = this.props.issues.map((issue, index) => {
         if (issue.issueState === "open") {
           return <Issue issueInfo={issue} key={index} />;
         }
-        return "Not open issue";
       });
     }
     if (selectedTypeIssues.length === 0) {
-      console.log(this.state.currentIssues);
       this.setState({ noIssues: true });
     }
     this.setState({ currentIssues: selectedTypeIssues });

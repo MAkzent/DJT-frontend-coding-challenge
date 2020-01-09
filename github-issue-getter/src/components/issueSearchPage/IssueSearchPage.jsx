@@ -30,7 +30,6 @@ class IssueSearchPage extends Component {
     const splitLink = link.split("/");
     const gitHubUser = splitLink[3];
     const repoName = splitLink[4];
-    console.log(gitHubUser);
 
     this.changeViewToLoading();
     axios
@@ -62,7 +61,6 @@ class IssueSearchPage extends Component {
           this.setState({ gitHubIssues: curGitHubLinks });
           return "Found Issues";
         });
-        console.log(this.state.gitHubIssues);
         this.changeViewToResults();
       })
       .catch(err => {
