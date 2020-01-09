@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 
-class Result extends Component {
+class Issue extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
   render() {
-    return <div></div>;
+    return <div>issue</div>;
   }
 }
 
-export default Result;
+export default Issue;

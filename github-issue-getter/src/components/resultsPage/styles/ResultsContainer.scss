@@ -1,0 +1,17 @@
+.resultsContainer {
+  width: 100vw;
+  height: 100vh;
+}
+
+.resultsNavbarContainer {
+  height: 8%;
+  background: #e91e63;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2%;
+}
+
+.issueContainer {
+  height: 80%;
+}
