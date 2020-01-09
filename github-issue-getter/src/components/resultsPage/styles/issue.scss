@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
   -webkit-box-shadow: 3px 3px 5px 6px #ccc; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
   -moz-box-shadow: 3px 3px 5px 6px #ccc; /* Firefox 3.5 - 3.6 */
   box-shadow: 3px 3px 5px 6px #ccc; /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
@@ -9,17 +10,24 @@
 
 .issueTitle {
   display: flex;
+  padding: 10px;
   justify-content: center;
   align-items: center;
   font-weight: bold;
   background: #3f51b5;
-  height: 35%;
+  height: 30%;
   color: white;
 }
 
 .issueBody {
-  flex: 0 0 50px;
+  display: block;
+  display: -webkit-box;
+  max-width: 100%;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 1;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-
   text-overflow: ellipsis;
 }

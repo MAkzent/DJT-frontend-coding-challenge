@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./styles/issueType.scss";
+import "./styles/issueFilter.scss";
 class IssueFilter extends Component {
   constructor(props) {
     super(props);
