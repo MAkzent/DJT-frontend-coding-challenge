@@ -18,3 +18,14 @@
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-template-rows: auto;
 }
+
+.issueFilterContainer {
+  display: flex;
+  width: 30%;
+  color: #455a64;
+  margin-top: 2%;
+  margin-left: 2%;
+  margin-bottom: 2%;
+  font-size: 12px;
+  justify-content: space-between;
+}

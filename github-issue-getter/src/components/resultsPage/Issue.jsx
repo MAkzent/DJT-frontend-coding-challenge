@@ -6,7 +6,6 @@ class Issue extends Component {
     this.state = {};
   }
   render() {
-    console.log(this.props.issueInfo);
     return <div className="issue">{this.props.issueInfo.issueTitle}</div>;
   }
 }
