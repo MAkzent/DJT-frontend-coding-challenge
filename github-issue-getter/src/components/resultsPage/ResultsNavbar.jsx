@@ -9,7 +9,7 @@ class ResultsNavbar extends Component {
     return (
       <Fragment>
         <div className="navBarTitle">GitHub Issue Viewer</div>
-        <div>link</div>
+        <div className="navBarLink">{this.props.gitHubLink}</div>
       </Fragment>
     );
   }

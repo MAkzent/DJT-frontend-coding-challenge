@@ -65,7 +65,7 @@ class ResultsContainer extends Component {
     return (
       <div className="resultsContainer">
         <nav className="resultsNavbarContainer">
-          <ResultsNavBar />
+          <ResultsNavBar gitHubLink={this.props.gitHubLink} />
         </nav>
         {
           <div className="issueFilterContainer">

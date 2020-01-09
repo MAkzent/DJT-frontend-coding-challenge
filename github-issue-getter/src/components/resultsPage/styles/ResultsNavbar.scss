@@ -4,8 +4,15 @@
   font-weight: bold;
 }
 
+.navBarLink {
+  font-size: 3vw;
+}
+
 @media screen and (min-width: 1200px) {
   .navBarTitle {
     font-size: 3vw;
+  }
+  .navBarLink {
+    font-size: 2vw;
   }
 }

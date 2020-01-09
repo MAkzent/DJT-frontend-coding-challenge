@@ -109,7 +109,12 @@ class IssueSearchPage extends Component {
         </div>
       );
     } else {
-      currentView = <ResultsContainer issues={this.state.gitHubIssues} />;
+      currentView = (
+        <ResultsContainer
+          gitHubLink={this.state.currentGitHubLink}
+          issues={this.state.gitHubIssues}
+        />
+      );
     }
     return <Fragment>{currentView}</Fragment>;
   }
