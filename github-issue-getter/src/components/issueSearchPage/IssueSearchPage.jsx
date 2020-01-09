@@ -1,9 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import axios from "axios";
+import ResultsContainer from "../resultsPage/ResultsContainer";
 class IssueSearchPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: "",
       currentGitHubLink: "",
       gitHubIssues: []
     };
@@ -23,10 +25,14 @@ class IssueSearchPage extends Component {
 
   GitHubIssuesGetter = link => {
     //https://github.com/forbesd7/guitarPractice
+
+    //split link and get the user/reponame
     const splitLink = link.split("/");
     const gitHubUser = splitLink[3];
     const repoName = splitLink[4];
     console.log(gitHubUser);
+
+    this.changeViewToLoading();
     axios
       .get(`https://api.github.com/repos/${gitHubUser}/${repoName}/issues`, {
         params: {
@@ -35,6 +41,7 @@ class IssueSearchPage extends Component {
         }
       })
       .then(res => {
+        //filter information for what is needed to show
         res.data.map(issue => {
           const issueInformation = {
             issueTitle: issue.title,
@@ -43,18 +50,19 @@ class IssueSearchPage extends Component {
             issueLabels: issue.labels,
             issueLink: issue.url
           };
-
+          //set a parameter if it is a pull request
           if (issue.pull_request) {
             issueInformation.pullRequest = true;
           } else {
             issueInformation.pullRequest = false;
           }
-
+          //update state with filtered issue
           const curGitHubLinks = this.state.gitHubIssues;
           curGitHubLinks.push(issueInformation);
           this.setState({ gitHubIssues: curGitHubLinks });
         });
         console.log(this.state.gitHubIssues);
+        this.changeViewToResults();
       })
       .catch(err => {
         console.log(err); //TODO: Show error page
@@ -65,18 +73,35 @@ class IssueSearchPage extends Component {
     this.setState({ currentGitHubLink: e.target.value });
   };
 
+  changeViewToResults = () => {
+    this.setState({ isLoading: false });
+  };
+
+  changeViewToLoading = () => {
+    this.setState({ isLoading: true });
+  };
+
   render() {
-    return (
-      <div>
-        <input
-          onKeyPress={this.callGitHubIssuesGetter}
-          onChange={this.updateGitHubLink}
-          type="text"
-          placeholder="Paste a link to a GitHub repo!"
-          value={this.state.value}
-        ></input>
-      </div>
-    );
+    let currentView;
+
+    if (this.state.isLoading === "") {
+      currentView = (
+        <div>
+          <input
+            onKeyPress={this.callGitHubIssuesGetter}
+            onChange={this.updateGitHubLink}
+            type="text"
+            placeholder="Paste a link to a GitHub repo!"
+            value={this.state.value}
+          ></input>
+        </div>
+      );
+    } else if (this.state.isLoading === true) {
+      currentView = <div>loading</div>;
+    } else {
+      currentView = <ResultsContainer issues={this.state.gitHubIssues} />;
+    }
+    return <Fragment>{currentView}</Fragment>;
   }
 }
 
