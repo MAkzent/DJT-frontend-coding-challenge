@@ -5,12 +5,7 @@ class IssueSearchPage extends Component {
     super(props);
     this.state = {
       currentGitHubLink: "",
-      gitHubIssues: {
-        issueTitle: "",
-        issueBody: "",
-        issueState: "",
-        issueLabels: []
-      }
+      gitHubIssues: []
     };
   }
 
@@ -40,7 +35,29 @@ class IssueSearchPage extends Component {
         }
       })
       .then(res => {
-        console.log(res.data);
+        res.data.map(issue => {
+          const issueInformation = {
+            issueTitle: issue.title,
+            issueBody: issue.body,
+            issueState: issue.state,
+            issueLabels: issue.labels,
+            issueLink: issue.url
+          };
+
+          if (issue.pull_request) {
+            issueInformation.pullRequest = true;
+          } else {
+            issueInformation.pullRequest = false;
+          }
+
+          const curGitHubLinks = this.state.gitHubIssues;
+          curGitHubLinks.push(issueInformation);
+          this.setState({ gitHubIssues: curGitHubLinks });
+        });
+        console.log(this.state.gitHubIssues);
+      })
+      .catch(err => {
+        console.log(err); //TODO: Show error page
       });
   };
 
