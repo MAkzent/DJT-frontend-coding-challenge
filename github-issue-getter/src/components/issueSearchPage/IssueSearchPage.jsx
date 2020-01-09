@@ -102,7 +102,13 @@ class IssueSearchPage extends Component {
       );
     } else if (this.state.isLoading === true) {
       currentView = (
-        <img src="https://wpamelia.com/wp-content/uploads/2018/11/ezgif-2-6d0b072c3d3f.gif"></img>
+        <div id="loadingImageContainer">
+          <img
+            id="loadingImage"
+            placeholder="loading..."
+            src="https://wpamelia.com/wp-content/uploads/2018/11/ezgif-2-6d0b072c3d3f.gif"
+          ></img>
+        </div>
       );
     } else {
       currentView = <ResultsContainer issues={this.state.gitHubIssues} />;

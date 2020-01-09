@@ -14,10 +14,13 @@ class ResultsContainer extends Component {
         "Closed Issues",
         "Pull Requests"
       ],
-      currentIssues: ""
+      currentIssues: "",
+      noIssues: false
     };
   }
-
+  componentDidMount() {
+    //this.showSelectedIssueType("All Issues");
+  }
   showSelectedIssueType = selectedType => {
     let selectedTypeIssues;
     //need to refactor this, just trying to get it working
@@ -44,26 +47,39 @@ class ResultsContainer extends Component {
         }
       });
     }
+    if (selectedTypeIssues.length === 0) {
+      console.log(this.state.currentIssues);
+      this.setState({ noIssues: true });
+    }
     this.setState({ currentIssues: selectedTypeIssues });
   };
   render() {
+    let issueViewer;
+    if (this.state.noIssues === true) {
+      issueViewer = <div>No issues for this repo...</div>;
+    } else if (this.state.noIssues === false) {
+      issueViewer = (
+        <div className="issuesContainer">{this.state.currentIssues}</div>
+      );
+    }
     return (
       <div className="resultsContainer">
         <nav className="resultsNavbarContainer">
           <ResultsNavBar />
         </nav>
-
-        <div className="issueFilterContainer">
-          {this.state.issueTypeSelections.map(issueType => {
-            return (
-              <IssueFilter
-                showSelectedIssueType={this.showSelectedIssueType}
-                issueType={issueType}
-              />
-            );
-          })}
-        </div>
-        <div className="issuesContainer">{this.state.currentIssues}</div>
+        {
+          <div className="issueFilterContainer">
+            {this.state.issueTypeSelections.map(issueType => {
+              return (
+                <IssueFilter
+                  showSelectedIssueType={this.showSelectedIssueType}
+                  issueType={issueType}
+                />
+              );
+            })}
+          </div>
+        }
+        {issueViewer}
       </div>
     );
   }

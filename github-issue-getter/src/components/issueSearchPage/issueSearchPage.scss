@@ -23,3 +23,17 @@
   margin-bottom: 3%;
   font-weight: bold;
 }
+
+#loadingImageContainer {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 400px) {
+  #loadingImageContainer {
+    margin-left: 2%;
+  }
+}
