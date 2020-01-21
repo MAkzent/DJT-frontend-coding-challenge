@@ -11,7 +11,9 @@ class Issue extends Component {
     return (
       <div className="issueContainer">
         <div className="issueTitle">
-          <div>{this.props.issueInfo.issueTitle}</div>
+          <div className="issueTitleText">
+            {this.props.issueInfo.issueTitle}
+          </div>
         </div>
         <div className="issueBody">{this.props.issueInfo.issueBody}</div>
         <div className="issueLabelsContainer">
