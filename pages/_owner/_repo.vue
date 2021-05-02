@@ -1,7 +1,8 @@
 <template>
   <div class="cardContainer">
-    <div v-if="issues.length < 1" class="noIssues">
+    <div v-if="outputIssues.length < 1" class="noIssues">
       <h1>This repo contains no issues!</h1>
+      <h2>Please check that the url is correct!</h2>
     </div>
     <Card v-else v-for="issue in outputIssues" :key="issue.id" :issue="issue" />
   </div>
@@ -31,6 +32,7 @@ export default {
   },
   computed: {
     outputIssues: function() {
+      if (!Array.isArray(this.issues)) return [];
       const issueCopy = this.issues.slice(0);
       if (this.filteredItem === "") return issueCopy;
       return issueCopy.filter(this.filterItems);
@@ -69,14 +71,20 @@ export default {
 
 .noIssues {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 70vh;
   grid-column: 1 / 5;
 }
 
-.noIssues h1 {
+.noIssues h1,
+.noIssues h2 {
   color: var(--text-default);
+}
+
+.noIssues h1 {
+  padding-bottom: 10px;
 }
 
 .cardContainer {
