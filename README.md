@@ -1,53 +1,52 @@
-## Issues Explorer (front end)
+# DoubleJump Frontend Challenge
 
-> Please feel free to ask questions!
-First and foremost, this project is meant for you to showcase what you can do with JavaScript (specifically Vue, but React is also OK) and CSS.
+#### A nice little issue viewer for your GitHub issues! Made as a coding challenge for [DoubleJump Tokyo](https://www.doublejump.tokyo/)!
 
-We want to gauge your grasp of Javascript (using Vue or React), CSS (preprocessors are encouraged!), and how you organize your code. We'll be looking for best practices, your development process, design decisions, and overall project structure. Covering edge cases is also something we look out for. 
+## Table of contents
 
-## M-V-P! M-V-P!
+- [Build Setup](#build-setup)
+- [Technologies](#technologies)
+- [Setup](#setup)
+- [Features](#features)
+- [Contact](#contact)
 
-Your mission is to create a prototype of a cool issue explorer for a fictional client. As an initial goal, you'll be creating the issue explorer for GitHub issues and those issues will be filterable by their state!
+## Build Setup
 
-We are giving _you_ complete control over the architecture of how to implement it. We prefer if you used Vue, however using React is also okay in case you're much more comfortible with it. 
+```bash
+# install dependencies
+$ npm install
 
-**See _mocks folder** to get a clear picture of the task 😎
+# serve with hot reload at localhost:3000
+$ npm run dev
 
-### Constraints
+# build for production and launch server
+$ npm run build
+$ npm run start
 
-- It must look and feel good across **all** screen sizes
-- No CSS frameworks
-- That's it!
+# generate static project
+$ npm run generate
+```
 
-### Tasks (required)
+## Technologies
 
-- Create a `README.md` file with simple instructions to run the app.
-- Create a search page with a search bar. Users should be able to paste a GitHub repo URL here.
-- Create a results page that displays **all** (open, closed, pull requests) issues from the search query.
-- Indicate which issues are closed or pull requests using the icons.
-- Implement filtering by open, closed, or pull requests on the results page.
+This web application was built using:
 
-### Bonus (not required)
+- Vue
+- Nuxtjs
+- Axios
 
-If you have some extra time, pick any of the following!
+## Features
 
-- Implement smooth transitions to and from the search and results pages.
-- When a filter is applied, add show / hide transitions to the results.
-- Add indicators for search progress.
-- Cover the case of an error fetching the results.
-- Implement pagination with either infinite scrolling or multiple pages.
-- Allow users to be able to share states via URLs to other users so that they can view results without searching!
+- Search for a Github repo from the search bar on the home screen
+- Share the URL for the issues you're looking at!
+- Page through issues
+- Sort the issues by multiple catagories
+- Fun transition from Home to the issues page
 
-Use the [Github issues API](https://developer.github.com/v3/issues/#list-issues-for-a-repository) as your source of data. The first page with all issues should have the `status` param set to `all`. _Be aware of [the API's pagination params](https://developer.github.com/v3/#pagination)_.
+## Contact
 
-## Hints
+Made for [DoubleJump Tokyo](https://www.doublejump.tokyo/) by Nick Taylor
 
-- It is an MVP (minimum viable product) - done is better than perfect.
-- This project is designed to be completed in about 4 hours, but if you need some extra time to plan, research, and fill in the "Looking Back" section of your Q&A, take it!
-- Test your app with repos that are full of isses and repos that have no issues at all.
+Thanks for the opportunity!
 
-**Before you start, please read and fill out the "Planning" section of the [QnA.md](./QnA.md)**.
-
-That's all for now. Don't hesitate to ask questions, for guidance or for more clarification on the project. We are excited to see what you come up with!
-
-Good luck!
+For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
