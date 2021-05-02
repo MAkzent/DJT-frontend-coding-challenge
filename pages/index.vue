@@ -2,6 +2,9 @@
   <div class="container">
     <h1 class="mainTitle">GitHub Issue Viewer</h1>
     <Search />
+    <h2 v-if="valid === false" class="validError">
+      This URL doesn't look quite right!
+    </h2>
   </div>
 </template>
 
@@ -10,6 +13,11 @@ import Search from "../components/Search";
 export default {
   components: {
     Search
+  },
+  computed: {
+    valid: function() {
+      return this.$store.state.valid;
+    }
   }
 };
 </script>
@@ -30,5 +38,10 @@ export default {
   font-size: var(--big-text);
   color: white;
   padding-bottom: 20px;
+}
+
+.validError {
+  padding-top: 20px;
+  color: white;
 }
 </style>
