@@ -22,10 +22,21 @@ export default {
     },
     output: function(e) {
       const deconstructedUrl = this.parseSearch(e.target.value);
+      if (!this.checkUrl(e.target.value)) {
+        this.$store.dispatch("setValid", false);
+        return;
+      }
       this.$store.commit("updateParsedSearch", deconstructedUrl);
       this.$router.push(
         `/${deconstructedUrl[0]}/${deconstructedUrl[1]}?per_page=12&page=1`
       );
+    },
+    checkUrl: function(url) {
+      const exp = /https:\/\/github\.com\//;
+      const regex = new RegExp(exp);
+      const match = regex.test(url);
+
+      return match;
     }
   }
 };
